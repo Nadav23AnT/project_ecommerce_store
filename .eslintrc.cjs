@@ -4,12 +4,14 @@ module.exports = {
     es2021: true,
   },
   extends: [
+    'eslint:recommended',
     'standard-with-typescript',
     'plugin:prettier/recommended',
     'plugin:@cspell/recommended',
   ],
   plugins: ['prettier'],
   ignorePatterns: ['build'],
+  root: true,
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
