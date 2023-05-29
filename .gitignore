@@ -1,0 +1,21 @@
+# global ignores:
+.vs
+
+# client ignores:
+Source/client/node_modules
+Source/client/build
+Source/client/package-lock.json
+Source/client/.cspellcache
+
+# server ignores:
+Source/server/TAMAZ.Server/Attachments
+bin
+obj
+bin_tests
+Debug
+Release
+x64
+win-x64
+logs
+
+
