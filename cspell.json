@@ -12,7 +12,7 @@
     "css"
   ],
   "dictionaryDefinitions": [],
-  "import": ["Source/client/node_modules/@cspell/dict-he/cspell-ext.json"],
+  "import": ["client/node_modules/@cspell/dict-he/cspell-ext.json"],
   "useGitignore": true,
   "ignorePaths": ["*.{csproj,csproj.user,sln}"],
   "words": [
