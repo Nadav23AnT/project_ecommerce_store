@@ -10,7 +10,7 @@
         "splitTerminals": [
           {
             "name": "server",
-            "commands": [""]
+            "commands": ["cd server"]
           },
           {
             "name": "client",

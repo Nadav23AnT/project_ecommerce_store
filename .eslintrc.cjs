@@ -1,9 +1,4 @@
 module.exports = {
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
   env: {
     browser: true,
     es2022: true,

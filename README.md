@@ -1,1 +1,1 @@
-# project_ecommerce_store
+# project e-commerce store
