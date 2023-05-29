@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "merge": "git pull && git pull origin main && git merge main"
   },
   "devDependencies": {
     "typescript": "^5.0.2",
