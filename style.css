@@ -1,6 +1,6 @@
 @import url('https://fonts.googlepapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900;&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -58,26 +58,90 @@ body {
 }
 
 
-#navbar{
+#navbar {
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
 
 }
 
-#navbar li{
+#navbar li {
     list-style: none;
     padding: 0 20px;
 }
 
-#navbar li a{
+#navbar li a {
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
     color: #1a1a1a;
 }
 
-#navbar li a:hover{
+#navbar li a:hover {
     color: #088178;
 }
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+footer .logo {
+    margin-bottom: 30px;
+}
+
+footer h4 {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+footer p {
+    font-size: 13px;
+    margin: 0 0 8px 0;
+}
+
+footer a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+footer .follow {
+    margin-top: 20px;
+}
+
+footer .follow i {
+    color: #088178;
+    padding-right: 4px;
+    cursor: pointer;
+
+}
+
+footer .install .row img {
+    border: 1px solid #088178;
+    border-radius: 6px;
+
+}
+
+footer .install {
+    margin: 10px 0 15px 0;
+}
+
+footer .follow i:hover,
+footer a:hover {
+    color: aqua;
+}
+
+footer .copyright {
+    width: 100%;
+    text-align: center;
 }
