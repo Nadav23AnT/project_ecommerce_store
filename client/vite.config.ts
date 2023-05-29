@@ -1,11 +1,11 @@
 import { defineConfig } from 'vite';
-
-const openUrl = 'http://localhost:3000';
+import { OPEN_URL } from './src/CommonConstants';
+import { PORT } from './src/CommonConstants';
 
 export default defineConfig({
   server: {
-    port: 5000,
-    open: openUrl,
+    port: PORT,
+    open: OPEN_URL,
   },
   build: {
     outDir: 'build',
