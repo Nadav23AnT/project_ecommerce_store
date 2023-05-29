@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
-import { OPEN_URL } from './src/CommonConstants';
-import { PORT } from './src/CommonConstants';
+import { OPEN_URL, PORT } from './src/CommonConstants';
 
 export default defineConfig({
   server: {

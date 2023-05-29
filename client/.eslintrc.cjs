@@ -1,33 +1,24 @@
 module.exports = {
   env: {
     browser: true,
-    es2022: true,
-    node: true,
+    es2021: true,
   },
   extends: [
+    'standard-with-typescript',
     'plugin:prettier/recommended',
     'plugin:@cspell/recommended',
   ],
-  plugins: [
-    'prettier',
-  ],
+  plugins: ['prettier'],
   ignorePatterns: ['build'],
   overrides: [],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
     project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+    // extraFileExtensions: ['.vue'],
   },
   rules: {
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'interface',
-        prefix: ['I'],
-        format: ['UPPER_CASE', 'StrictPascalCase'],
-      },
-    ],
     '@cspell/spellchecker': ['error', { checkComments: true, autoFix: true }],
     '@typescript-eslint/no-unused-vars': 'error',
     'guard-for-in': 'off',
