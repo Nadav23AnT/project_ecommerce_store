@@ -10,31 +10,12 @@ import compression from 'compression';
 import cors, { CorsOptions } from 'cors';
 import csrf from 'csurf';
 import dotenv from 'dotenv';
-import AppError from '@utils/appError';
-import globalErrorHandler from '@controllers/errorController';
-import { loginLimiter } from '@utils/loginLimiter';
-import userRouter from '@routes/userRoutes';
-import typeRouter from '@routes/typeRoutes';
-import dashboardRouter from '@routes/dashboardRoutes';
-import dashboardNewRouter from '@routes/dashboardNewRoutes';
-import customerRouter from '@routes/customerRoutes';
-import environmentRouter from '@routes/environmentRoutes';
-import { IUsers } from '@/types/userType';
-import multer from 'multer';
+import globalErrorHandler from '@Controllers/errorController';
+import loginLimiter from '@Utils/loginLimiter';
+import AppError from '@Utils/AppError';
+import userRouter from '@Routes/userRoutes';
 
 dotenv.config({ path: './.env.dev' });
-
-declare global {
-  namespace Express {
-    interface Request {
-      user: Partial<IUsers>;
-      // file?: File | undefined;
-      file?: Multer.File | undefined;
-      requestTime: string;
-      rateLimit: { remaining: string };
-    }
-  }
-}
 
 const app = express();
 
@@ -128,19 +109,8 @@ app.use(
 // compress requests size
 app.use(compression());
 
-// Test middleware
-// app.use((req, res, next) => {
-//   req.requestTime = new Date().toISOString();
-//   next();
-// });
-
 // 2) ROUTES
 app.use('/api/users', userRouter);
-app.use('/api/types', typeRouter);
-app.use('/api/dashboards', dashboardRouter);
-app.use('/api/dashboardsNew', multer().none(), dashboardNewRouter);
-app.use('/api/environments', environmentRouter);
-app.use('/api/customers', customerRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`הכתובת ${req.originalUrl} לא קיימת בשרת!`, 404));

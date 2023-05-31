@@ -7,10 +7,10 @@
     "dev": "env-cmd -f .env.dev ts-node-dev --watch .env.dev --require tsconfig-paths/register --transpile-only --respawn --inspect=4321 server.ts",
     "prod": "env-cmd -f .env.prod cross-env NODE_ENV=production node -r tsconfig-paths/register build/server.js",
     "build": "rimraf build && tsc && tsc-alias",
-    "start": "cross-env NODE_ENV=production node build/server.js"
+    "start": "cross-env NODE_ENV=production node build/server.js",
+    "merge": "git pull origin main && git merge main",
+    "lint": "npm run merge && npx tsc && npx prettier --write --cache --loglevel silent . && npx cspell --cache --no-progress ./**/* && npx eslint --fix ."
   },
-  "author": "Avichai Iluz",
-  "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
@@ -27,7 +27,6 @@
     "hpp": "^0.2.3",
     "html-to-text": "^8.2.1",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^5.0.0-alpha.0",
     "mongoose": "^6.9.0",
     "mongoose-auto-number": "^1.0.7",
     "morgan": "^1.10.0",

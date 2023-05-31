@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import app from './app';
@@ -29,7 +30,7 @@ if (DATABASE && DATABASE_USERNAME && DATABASE_PASSWORD && DATABASE_NAME) {
     .replace('<DB_NAME>', DATABASE_NAME);
 }
 
-// dont allow mongoose save fields that don't exist in model's schema
+// don't allow mongoose save fields that don't exist in model's schema
 mongoose.set('strictQuery', true);
 
 mongoose.connect(DB_CONNECTION_STRING, () =>

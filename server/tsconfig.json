@@ -7,14 +7,14 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./*"],
-      "@controllers/*": ["controllers/*"],
-      "@middelware/*": ["middelware/*"],
-      "@models/*": ["models/*"],
       "@public/*": ["public/*"],
-      "@routes/*": ["routes/*"],
-      "@types/*": ["types/*"],
-      "@utils/*": ["utils/*"],
-      "@views/*": ["views/*"]
+      "@Controllers/*": ["Controllers/*"],
+      "@Middlewares/*": ["Middlewares/*"],
+      "@Models/*": ["Models/*"],
+      "@Routes/*": ["Routes/*"],
+      "@Interfaces/*": ["Interfaces/*"],
+      "@Utils/*": ["Utils/*"],
+      "@Views/*": ["Views/*"]
     },
     "allowJs": true,
     "checkJs": true,
