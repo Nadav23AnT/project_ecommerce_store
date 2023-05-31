@@ -7,7 +7,7 @@ import {
   getAllUsers,
   updateUser,
   deleteUser,
-} from '../Controllers/userController';
+} from '@Controllers/userController';
 import {
   signup,
   csrfToken,
@@ -20,12 +20,12 @@ import {
   logout,
   restrictTo,
   sendConfirmEmail,
-} from '../Controllers/authController';
+} from '@Controllers/authController';
 import {
   uploadUserPhoto,
   resizeUserPhoto,
   setImageToField,
-} from '../Middlewares/uploadImage';
+} from '@Middlewares/uploadImage';
 
 const router = express.Router();
 

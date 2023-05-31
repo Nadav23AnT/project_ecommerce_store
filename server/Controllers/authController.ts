@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import User from '@Models/userModel';
-import { IUsers } from '@/Interfaces/userType';
+import { IUsers } from '@Interfaces/userType';
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import catchAsync from '@Utils/catchAsync';
-import AppError from '@/Utils/AppError';
+import AppError from '@Utils/AppError';
 import Email from '@Utils/email';
 import loginLimiter from '@Utils/loginLimiter';
 import { ObjectId } from 'mongoose';

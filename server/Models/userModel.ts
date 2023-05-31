@@ -1,13 +1,14 @@
+/* eslint-disable func-names */
 import crypto from 'crypto';
 import { Schema, model, Query } from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
-import { currentUser, IUsers } from '../Interfaces/userType';
+import AppError from '@Utils/AppError';
+import { currentUser, IUsers } from '@Interfaces/userType';
 import {
   checkIsCorrectPhone,
   checkIsStrongPassword,
 } from '../Utils/validations';
-import AppError from '@/Utils/AppError';
 
 const userSchema: Schema = new Schema<IUsers>(
   {

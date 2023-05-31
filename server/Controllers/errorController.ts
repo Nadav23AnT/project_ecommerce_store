@@ -1,5 +1,5 @@
 import { Response, ErrorRequestHandler } from 'express';
-import AppError from '@/Utils/AppError';
+import AppError from '@Utils/AppError';
 import mongoose, { CastError } from 'mongoose';
 
 const handleCastErrorDB = (err: CastError) => {

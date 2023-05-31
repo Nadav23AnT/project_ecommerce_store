@@ -7,8 +7,8 @@ import {
   getCustomer,
   updateCustomer,
   deleteCustomer,
-} from '../Controllers/customerController';
-import { protect, restrictTo } from '../Controllers/authController';
+} from '@Controllers/customerController';
+import { protect, restrictTo } from '@Controllers/authController';
 
 const router = express.Router();
 

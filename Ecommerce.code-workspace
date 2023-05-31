@@ -17,6 +17,18 @@
             "commands": ["cd client", "npm run dev"]
           }
         ]
+      },
+      {
+        "splitTerminals": [
+          {
+            "name": "Lint server",
+            "commands": ["cd server"]
+          },
+          {
+            "name": "Lint client",
+            "commands": ["cd client"]
+          }
+        ]
       }
     ],
     "typescript.tsdk": "Source/client/node_modules/typescript/lib",

@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import { Model, Query } from 'mongoose';
-import catchAsync from '../Utils/catchAsync';
-import AppError from '../Utils/AppError';
-import APIFeatures from '../Utils/ApiFeatures';
-import removeImage from '../Utils/removeImage';
+import catchAsync from '@Utils/catchAsync';
+import AppError from '@Utils/AppError';
+import APIFeatures from '@Utils/ApiFeatures';
+import removeImage from '@Utils/removeImage';
 
 export const createOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response) => {

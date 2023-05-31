@@ -1,4 +1,4 @@
-import Customer from '../Models/customerModel';
+import Customer from '@Models/customerModel';
 import {
   getAll,
   getOne,

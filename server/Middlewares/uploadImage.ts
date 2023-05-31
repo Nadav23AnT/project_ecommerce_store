@@ -1,8 +1,8 @@
 import sharp from 'sharp';
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import multer, { FileFilterCallback } from 'multer';
-import catchAsync from '../Utils/catchAsync';
-import AppError from '../Utils/AppError';
+import catchAsync from '@Utils/catchAsync';
+import AppError from '@Utils/AppError';
 
 // Stores the uploaded files in memory as Buffer objects.
 const multerStorage = multer.memoryStorage();
