@@ -354,3 +354,12 @@ a{
 .product:hover .description{
     background-color: #efe3ff;
 }
+
+#banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-image: url("");
+}
