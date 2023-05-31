@@ -62,8 +62,8 @@ const sendErrorProd = (err: AppError, res: Response) => {
   }
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const globalErrorHandler: ErrorRequestHandler = (err: any, _req, res) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const globalErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   let error = { ...err };
   error.statusCode = err.statusCode || 500;
   error.status = err.status || 'error';
@@ -75,6 +75,8 @@ const globalErrorHandler: ErrorRequestHandler = (err: any, _req, res) => {
   if (isDevError) {
     if (err.name === 'PayloadTooLargeError')
       error.message = 'כמות המידע שהוזנה גדולה מדי';
+    if (!(error instanceof AppError))
+      error = new AppError(error.message, error.code || 500);
 
     sendErrorDev(err, res);
   } else if (isProdError) {
