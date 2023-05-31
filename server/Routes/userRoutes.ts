@@ -39,7 +39,7 @@ router.patch('/resetPassword/:token', resetPassword);
 
 router.post('/sendConfirmEmail', sendConfirmEmail);
 
-// Protect all routes after this middelware. this routes is only for signed-in users.
+// Protect all routes after this middleware. this routes is only for signed-in users.
 router.use(protect);
 
 router.post('/confirmEmail', confirmEmail);

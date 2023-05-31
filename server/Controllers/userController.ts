@@ -2,9 +2,9 @@ import { Request, Response, NextFunction, RequestHandler } from 'express';
 import User from '@Models/userModel';
 import catchAsync from '@Utils/catchAsync';
 import AppError from '@Utils/AppError';
-import { getAll, getOne, updateOne, deleteOne } from './handlerFactory';
 import { IUsers } from '@Interfaces/userType';
 import removeImage from '@Utils/removeImage';
+import { getAll, getOne, updateOne, deleteOne } from './handlerFactory';
 
 export const getAllUsers = getAll(User);
 export const getUser = getOne(User);

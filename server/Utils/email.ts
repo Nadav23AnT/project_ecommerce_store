@@ -1,6 +1,8 @@
+/* eslint-disable class-methods-use-this */
 import nodemailer from 'nodemailer';
 import pug from 'pug';
 import { convert } from 'html-to-text';
+import { IUsers } from '@Interfaces/userType';
 
 export default class Email {
   public to: string;
@@ -9,11 +11,11 @@ export default class Email {
 
   public url: string;
 
-  public from: any;
+  public from: string;
 
-  constructor(user: any, url: string) {
+  constructor(user: IUsers, url: string) {
     this.to = user.email;
-    this.firstName = user.name.split(' ')[0];
+    this.firstName = user.firstName;
     this.url = url;
     this.from = process.env.EMAIL_FROM;
   }
@@ -28,7 +30,7 @@ export default class Email {
         // auth: {
         //   user: process.env.SENDINBLUE_USERNAME,
         //   pass: process.env.SENDINBLUE_SMTP_KEY,
-      } as any);
+      });
     }
 
     return nodemailer.createTransport({
@@ -38,7 +40,7 @@ export default class Email {
         user: process.env.EMAIL_USERNAME,
         pass: process.env.EMAIL_PASSWORD,
       },
-    } as any);
+    });
   }
 
   // Send the actual email

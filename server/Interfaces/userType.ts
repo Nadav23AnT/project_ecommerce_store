@@ -27,5 +27,5 @@ export interface IUsers {
   active: boolean;
 }
 
-export type currentUser = Document<unknown, any, IUsers> &
+export type currentUser = Document<unknown, unknown, IUsers> &
   IUsers & { _id: ObjectId };

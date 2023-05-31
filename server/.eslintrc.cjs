@@ -23,6 +23,7 @@ module.exports = {
   ignorePatterns: ['build', '.eslintrc.cjs'],
   plugins: ['@typescript-eslint', 'promise', 'import', 'prettier'],
   rules: {
+    'prefer-destructuring': 'off',
     'consistent-return': 'off',
     'no-plusplus': 'off',
     'no-shadow': 'off',

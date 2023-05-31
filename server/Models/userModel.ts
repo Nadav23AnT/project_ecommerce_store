@@ -5,10 +5,7 @@ import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import AppError from '@Utils/AppError';
 import { currentUser, IUsers } from '@Interfaces/userType';
-import {
-  checkIsCorrectPhone,
-  checkIsStrongPassword,
-} from '../Utils/validations';
+import { checkIsCorrectPhone, checkIsStrongPassword } from '@Utils/validations';
 
 const userSchema: Schema = new Schema<IUsers>(
   {
@@ -115,6 +112,7 @@ userSchema.pre<IUsers>('save', function (next) {
   next();
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 userSchema.pre<Query<any, IUsers>>(/^find/, function (next) {
   // this points to the current query
   this.find({ active: { $ne: false } });
@@ -156,7 +154,7 @@ userSchema.methods.createPasswordResetToken = function () {
 userSchema.methods.createEmailConfirmToken = function () {
   const resetTokenEmail = crypto.randomBytes(32).toString('hex');
 
-  this.resetToken = resetTokenEmail as any;
+  this.resetToken = resetTokenEmail;
 
   this.emailConfirmToken = crypto
     .createHash('sha256')

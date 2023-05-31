@@ -21,14 +21,6 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
-    '@typescript-eslint/naming-convention': [
-      'error',
-      {
-        selector: 'interface',
-        prefix: ['I'],
-        format: ['UPPER_CASE', 'StrictPascalCase'],
-      },
-    ],
     '@cspell/spellchecker': ['error', { checkComments: true, autoFix: true }],
     '@typescript-eslint/no-unused-vars': 'error',
     'guard-for-in': 'off',
