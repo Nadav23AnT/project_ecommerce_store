@@ -1,0 +1,9 @@
+"dev": "ts-node-dev --watch .env.dev --require tsconfig-paths/register --transpile-only --respawn --inspect=4321 server.ts",
+
+ts-node-dev:                           run ts-node-dev
+--watch .env.dev:                    watch for the file ".env.dev"
+--require "tsconfig-paths/register":   require the module tsconfig-paths (tsconfig-paths used for ahort imports like @components/.....)
+--transpile-only:                      Especially for large code bases always consider running with --transpile-only flag which is normal for dev workflow and will speed up things greatly.
+--respawn:                             The --respawn flag is used to automatically restart a process that has crashed or exited.
+--inspect=4321:                        enable debugging. tell vscode to watch port 4321.
+server.ts:                             run the file named "server.ts"

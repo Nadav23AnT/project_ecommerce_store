@@ -1,3 +1,4 @@
+/* eslint-disable @cspell/spellchecker */
 module.exports = {
   env: {
     browser: true,
@@ -18,9 +19,16 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
-    // extraFileExtensions: ['.vue'],
   },
   rules: {
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'interface',
+        prefix: ['I'],
+        format: ['UPPER_CASE', 'StrictPascalCase'],
+      },
+    ],
     '@cspell/spellchecker': ['error', { checkComments: true, autoFix: true }],
     '@typescript-eslint/no-unused-vars': 'error',
     'guard-for-in': 'off',

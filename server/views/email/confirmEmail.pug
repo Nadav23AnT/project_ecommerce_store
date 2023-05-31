@@ -1,0 +1,17 @@
+extends baseEmail
+
+block content
+  p היי #{firstName} !
+  p ברוכים הבאים לאתר שלנו 🎉🙏
+  p כדי להמשיך ביצירת משתמש לחץ על הקישור לאמת את המייל שלך
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}`, target='_blank') אימות מייל
+  p אם את/ה זקוק/ה לעזרה בכל נושא שהוא אל תהסס/י לכתוב לי...
+  p - #{adminName}
