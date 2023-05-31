@@ -16,11 +16,6 @@ const signToken = (id: string | ObjectId) =>
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
-const getTokenExpiration = () =>
-  new Date(
-    Date.now() + parseFloat(String(process.env.JWT_COOKIE_EXPIRES_IN)) * DAY
-  );
-
 const createSendToken = (
   user: IUsers,
   statusCode: number,
@@ -28,7 +23,9 @@ const createSendToken = (
   res: Response
 ) => {
   const token = signToken(user._id);
-  const tokenExpiration = getTokenExpiration();
+  const tokenExpiration = new Date(
+    Date.now() + parseFloat(String(process.env.JWT_COOKIE_EXPIRES_IN)) * DAY
+  );
 
   res.cookie('token', token, {
     expires: tokenExpiration,

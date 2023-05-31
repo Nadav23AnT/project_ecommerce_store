@@ -12,9 +12,14 @@
     "css"
   ],
   "dictionaryDefinitions": [],
-  "import": ["client/node_modules/@cspell/dict-he/cspell-ext.json"],
+  "import": [
+    "client/node_modules/@cspell/dict-he/cspell-ext.json"
+  ],
   "useGitignore": true,
-  "ignorePaths": ["*.{csproj,csproj.user,sln}"],
+  "ignorePaths": [
+    "*.{csproj,csproj.user,sln}",
+    "server/Seed/Postman shual-dashboards-system/**/*.json"
+  ],
   "words": [
     "Avichai",
     "ecommerce",
@@ -35,6 +40,7 @@
     "Sendgrid",
     "SENDINBLUE",
     "shual",
+    "timespan",
     "typedefs",
     "virtuals",
     "בבקשה",

@@ -23,8 +23,14 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "resolveJsonModule": true,
+    "noEmit": true,
     "skipLibCheck": true
   },
   "include": [".", ".eslintrc.cjs"],
-  "exclude": ["node_modules", "build"]
+  "exclude": [
+    "node_modules",
+    "build",
+    "Seed",
+    "./Seed/Postman shual-dashboards-system/**/*"
+  ]
 }

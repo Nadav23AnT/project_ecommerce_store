@@ -1,0 +1,176 @@
+{
+  "info": {
+    "_postman_id": "0b33c80c-4d09-426e-9c88-cca921bd5b31",
+    "name": "Users",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET all users",
+      "id": "78602d48-7f28-4ba9-89ff-5b6a4c3eaa4e",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users",
+          "host": ["{{URL}}"],
+          "path": ["users"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET User",
+      "id": "abcfb8a8-180a-4341-ac05-be3ae2956590",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users/62ea75394647a02859edb8d7",
+          "host": ["{{URL}}"],
+          "path": ["users", "62ea75394647a02859edb8d7"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET Current User",
+      "id": "05e801e6-dcad-40b9-ba11-d8a125ed815e",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users/me",
+          "host": ["{{URL}}"],
+          "path": ["users", "me"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Current User Data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "8c53f07b-9032-46f0-9d76-a1349c35ecf4",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "5093afe7-d936-4476-abd1-35e1e60f8ab2",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "name",
+              "value": "avichai997",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "email",
+              "value": "avichai997@gmail.com",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "photo",
+              "type": "file",
+              "src": "/C:/Users/Avichai Iluz/Downloads/avichai.jpg"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{URL}}/users/updateMe",
+          "host": ["{{URL}}"],
+          "path": ["users", "updateMe"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Current User",
+      "id": "34113e85-b917-4582-9188-c62f9c4f26df",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users/deleteMe",
+          "host": ["{{URL}}"],
+          "path": ["users", "deleteMe"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User",
+      "id": "4f6c1e88-e016-4eee-8c53-d713454e78c7",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users/62b02a801295212cacb65900",
+          "host": ["{{URL}}"],
+          "path": ["users", "62b02a801295212cacb65900"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "241960a0-69a6-46fe-9a78-0c64e1356c2c",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "496f69af-2706-4c26-bc0d-45a4f71a6ada",
+        "type": "text/javascript",
+        "exec": [
+          "//Evaluate the visualizer script that is stored as an environment variable.",
+          "eval(pm.variables.get(\"dataTableVisualizerScript\"));"
+        ]
+      }
+    }
+  ]
+}

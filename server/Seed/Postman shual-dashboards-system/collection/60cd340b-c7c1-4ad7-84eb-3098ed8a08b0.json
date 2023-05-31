@@ -1,0 +1,218 @@
+{
+  "info": {
+    "_postman_id": "60cd340b-c7c1-4ad7-84eb-3098ed8a08b0",
+    "name": "Customers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create customers",
+      "id": "790722fa-2b24-4a33-9faa-f85992f66d48",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n   \"customerTypeId\": \"62ea79dbd152c7c170473ae0\",\r\n   \"shualCityId\": 100,\r\n   \"name\": \"ירושלים\",\r\n   \"lamas\": 3000,\r\n   \"isTraining\": false,\r\n   \"isEnabled\": true,\r\n   \"logo\": \"https://h-f-c.maps.arcgis.com/sharing/rest/content/items/1db8a10077f1454fa877064bf63a07e6/data\",\r\n   \"location\": {\r\n      \"type\": \"Point\",\r\n      \"coordinates\": [31.7794218, 35.2081085]\r\n   }\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/customers",
+          "host": ["{{URL}}"],
+          "path": ["customers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET all customers",
+      "id": "c930847a-bc0d-4e02-b87c-201ca8d26a8e",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/customers?fields=shualCityId, lams,name,isTraining,isEnabled,logo,customerTypeId&sort=shualCityId",
+          "host": ["{{URL}}"],
+          "path": ["customers"],
+          "query": [
+            {
+              "key": "id[gte]",
+              "value": "5",
+              "description": "filter where id >= 5",
+              "disabled": true
+            },
+            {
+              "key": "isOperational",
+              "value": "true",
+              "description": "filter where isOperational=true",
+              "disabled": true
+            },
+            {
+              "key": "fields",
+              "value": "shualCityId, lams,name,isTraining,isEnabled,logo,customerTypeId",
+              "description": "selcet specific fields"
+            },
+            {
+              "key": "page",
+              "value": "1",
+              "description": "pagination",
+              "disabled": true
+            },
+            {
+              "key": "limit",
+              "value": "100",
+              "description": "limit (offset in sequelize)",
+              "disabled": true
+            },
+            { "key": "sort", "value": "shualCityId" },
+            { "key": "shualCityId", "value": "155", "disabled": true },
+            { "key": "lamas", "value": "9600", "disabled": true },
+            {
+              "key": "name",
+              "value": "ערבות הירדן",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET customer",
+      "id": "6774b488-49db-489e-be87-42150d2d01b8",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/customers/62eed16cbd0fbf47c7a12d90",
+          "host": ["{{URL}}"],
+          "path": ["customers", "62eed16cbd0fbf47c7a12d90"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update customers",
+      "id": "ce1832d3-a630-4556-aba9-afcce1a446ea",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"קרית ים\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/customers/62eed16cbd0fbf47c7a12d90",
+          "host": ["{{URL}}"],
+          "path": ["customers", "62eed16cbd0fbf47c7a12d90"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Bulk Update customers",
+      "id": "4437eb84-abae-472e-9c61-266399f07a07",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"id\": 1,\r\n        \"order\": 1,\r\n        \"name\": \"test1\",\r\n        \"url\": \"www.test1.com\"\r\n    },\r\n    {\r\n        \"id\": 2,\r\n        \"order\": 2,\r\n        \"name\": \"test2\",\r\n        \"url\": \"www.test2.com\"\r\n    }\r\n]\r\n\r\n",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/customers",
+          "host": ["{{URL}}"],
+          "path": ["customers"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete customers",
+      "id": "a15d7590-962c-419e-a38e-504745c4da8e",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/customers/62f0c5698a3a44e00c4f87bc",
+          "host": ["{{URL}}"],
+          "path": ["customers", "62f0c5698a3a44e00c4f87bc"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete ALL customers!",
+      "id": "d18ed061-0cda-44a4-9db9-4ab9b9bc25b9",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/customers",
+          "host": ["{{URL}}"],
+          "path": ["customers"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "6794ded0-3ad8-45a9-9f19-f267fed303c8",
+        "type": "text/javascript",
+        "exec": [
+          "// Pre POST requests to add a CSRF header from the CsrfToken variable script that is stored as an environment variable.",
+          "eval(pm.variables.get(\"prePostRequestAddCsrfHeader\"));"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "148efab9-3bac-4d5d-a9e9-6eac97c24485",
+        "type": "text/javascript",
+        "exec": [
+          "//Evaluate the visualizer script that is stored as an environment variable.",
+          "eval(pm.variables.get(\"dataTableVisualizerScript\"));"
+        ]
+      }
+    }
+  ]
+}

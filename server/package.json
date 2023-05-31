@@ -6,12 +6,13 @@
   "scripts": {
     "dev": "env-cmd -f .env.dev ts-node-dev --watch .env.dev --require tsconfig-paths/register --transpile-only --respawn --inspect=4321 server.ts",
     "prod": "env-cmd -f .env.prod cross-env NODE_ENV=production node -r tsconfig-paths/register build/server.js",
-    "build": "rimraf build && tsc && tsc-alias",
+    "build": "rimraf build && tsc --noEmit false && tsc-alias",
     "start": "cross-env NODE_ENV=production node build/server.js",
     "merge": "git pull origin main && git merge main",
     "lint": "npm run merge && npx tsc && npx prettier --write --cache --loglevel silent . && npx cspell --cache --no-progress ./**/* && npx eslint --fix ."
   },
   "dependencies": {
+    "-": "^0.0.1",
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
@@ -23,6 +24,7 @@
     "express": "^4.18.2",
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^6.7.0",
+    "g": "^2.0.1",
     "helmet": "^6.0.1",
     "hpp": "^0.2.3",
     "html-to-text": "^8.2.1",

@@ -20,7 +20,11 @@ module.exports = {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
   },
-  ignorePatterns: ['build', '.eslintrc.cjs'],
+  ignorePatterns: [
+    'build',
+    '.eslintrc.cjs',
+    'Seed/Postman shual-dashboards-system/**/*.json',
+  ],
   plugins: ['@typescript-eslint', 'promise', 'import', 'prettier'],
   rules: {
     'prefer-destructuring': 'off',

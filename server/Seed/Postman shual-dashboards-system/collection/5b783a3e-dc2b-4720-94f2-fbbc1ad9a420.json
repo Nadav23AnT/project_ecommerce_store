@@ -1,0 +1,228 @@
+{
+  "info": {
+    "_postman_id": "5b783a3e-dc2b-4720-94f2-fbbc1ad9a420",
+    "name": "Dashboards",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET all dashboards",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "0467e59e-cfe3-405f-bdb5-7442b0ebc587",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "65c4708a-6e17-4ec9-977a-796aebda0e3a",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/dashboards?sort=order",
+          "host": ["{{URL}}"],
+          "path": ["dashboards"],
+          "query": [
+            {
+              "key": "order",
+              "value": "1",
+              "description": "find when order=1",
+              "disabled": true
+            },
+            {
+              "key": "fields",
+              "value": "name,url",
+              "description": "select specific fields",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "2",
+              "description": "pagination",
+              "disabled": true
+            },
+            {
+              "key": "limit",
+              "value": "5",
+              "description": "limit (offset in sequelize)",
+              "disabled": true
+            },
+            {
+              "key": "includeShualCityId[nin]",
+              "value": "[105]",
+              "type": "text",
+              "disabled": true
+            },
+            {
+              "key": "includeShualCityId",
+              "value": "[]",
+              "description": "include ShualCityId in the array",
+              "disabled": true
+            },
+            {
+              "key": "excludeShualCityId[nin]",
+              "value": "[105]",
+              "description": "exclude ShualCityId's",
+              "disabled": true
+            },
+            {
+              "key": "customerTypeId",
+              "value": "62ea79dbd152c7c170473ae0",
+              "disabled": true
+            },
+            { "key": "order[gte]", "value": "2", "disabled": true },
+            { "key": "sort", "value": "order" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET dashboard",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c5d16274-effe-4603-8744-b6e6a89f5928",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "05ace330-f36c-464f-9c8b-6058ae2a211e",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/dashboards/6301d8e83ce0ecd0e054ec68",
+          "host": ["{{URL}}"],
+          "path": ["dashboards", "6301d8e83ce0ecd0e054ec68"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create dashboard",
+      "id": "4f61bdf5-7061-4731-b00b-0db2e7afefc6",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"order\": \"13\",\r\n        \"name\": \"דשבורד 13\",\r\n        \"url\": \"https://portal.shual.org.il/portal/apps/opsdashboard/index.html#/a707975851c643f2b46b4acea170a209\",\r\n        \"includeShualCityId\": [100, 101],\r\n        \"excludeShualCityId\": [105],\r\n        \"customerTypeId\": \"62ea79dbd152c7c170473ae0\"\r\n    }\r\n]",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/dashboards",
+          "host": ["{{URL}}"],
+          "path": ["dashboards"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update dashboard",
+      "id": "1f9de013-a078-48f0-8dcc-4faf31b2e037",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"url\": \"https://h-f-c.maps.arcgis.com/apps/opsdashboard/index.html#/06c755a5b7684f14b8b49632c248ffbd\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/dashboards/6301d8e83ce0ecd0e054ec68",
+          "host": ["{{URL}}"],
+          "path": ["dashboards", "6301d8e83ce0ecd0e054ec68"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "bulk Update dashboards",
+      "id": "418a1efe-cc54-426b-92ca-e5df128c03e7",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "[\r\n    {\r\n        \"order\": 1,\r\n        \"name\": \"עדכון תמ\\\"צ צופרים תרגילי\",\r\n        \"url\": \"www.test.com\",\r\n        \"departmentId\": \"62b1835305fce9691a3a1a49\",\r\n        \"id\": \"62b2bda78c175bbc92a8affa\"\r\n    },\r\n    {\r\n        \"order\": 1,\r\n        \"name\": \"עדכון תמ\\\"צ צופרים תרגילי\",\r\n        \"url\": \"www.teנעכst.com\",\r\n        \"departmentId\": \"62b1841305fce9691a3a1a51\",\r\n        \"id\": \"62b2dfcb48e3132bd876cb46\"\r\n    },\r\n    {\r\n        \"order\": 1,\r\n        \"name\": \"סטטוס כשירות כוחות ארצי\",\r\n        \"url\": \"www.test1.com\",\r\n        \"departmentId\": \"62b1837f05fce9691a3a1a4c\",\r\n        \"id\": \"62b1aba83df6168c6f727ead\"\r\n    },\r\n    {\r\n        \"order\": 2,\r\n        \"name\": \"עדכון חסימות צירים ועומסי תנועה דור ב'\",\r\n        \"url\": \"www.test.com\",\r\n        \"departmentId\": \"62b1837f05fce9691a3a1a4c\",\r\n        \"id\": \"62b1abf73df6168c6f727eb3\"\r\n    }\r\n]\r\n",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/dashboards",
+          "host": ["{{URL}}"],
+          "path": ["dashboards"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete dashboard",
+      "id": "b450acbf-39bd-42b4-bbbd-d6d6cae1279e",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/dashboards/62b1882c9c82e0e3519fd12d",
+          "host": ["{{URL}}"],
+          "path": ["dashboards", "62b1882c9c82e0e3519fd12d"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "299e3377-926b-4d3e-a285-1cbbc340055d",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "b267cb91-4c6b-4ce0-b90e-8dc5e5a1a7fc",
+        "type": "text/javascript",
+        "exec": [
+          "//Evaluate the visualizer script that is stored as an environment variable.",
+          "eval(pm.variables.get(\"dataTableVisualizerScript\"));"
+        ]
+      }
+    }
+  ]
+}
