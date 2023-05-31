@@ -14,6 +14,7 @@ import globalErrorHandler from '@Controllers/errorController';
 import loginLimiter from '@Utils/loginLimiter';
 import AppError from '@Utils/AppError';
 import userRouter from '@Routes/userRoutes';
+import { version } from './package.json';
 
 dotenv.config({ path: './.env.dev' });
 
@@ -111,6 +112,10 @@ app.use(compression());
 
 // 2) ROUTES
 app.use('/api/users', userRouter);
+
+app.get('/', (req, res) => {
+  res.send(`Server is up and running v${version}`);
+});
 
 app.all('*', (req, res, next) => {
   next(new AppError(`הכתובת ${req.originalUrl} לא קיימת בשרת!`, 404));
