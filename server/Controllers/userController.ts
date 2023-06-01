@@ -17,6 +17,7 @@ const filterObj = (obj: object, ...allowedFields: string[]) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (allowedFields.includes(el)) (newObj as any)[el] = (obj as any)[el];
   });
+
   return newObj;
 };
 

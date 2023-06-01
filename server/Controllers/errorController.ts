@@ -4,18 +4,21 @@ import mongoose, { CastError } from 'mongoose';
 
 const handleCastErrorDB = (error: CastError) => {
   const message = `הוזן ערך לא חוקי ${error.path}: ${error.value}.`;
+
   return new AppError(message, 400);
 };
 
 const handleDuplicateFieldsDB = (error: AppError) => {
   const value = error.message.match(/(["'])(\\?.)*?\1/)?.[0];
   const message = `ערך השדה: ${value}. שהוזן כפול, הזן ערך ערך!`;
+
   return new AppError(message, 400);
 };
 
 const handleValidationErrorDB = (error: mongoose.Error.ValidationError) => {
   const errors = Object.values(error.errors).map((el) => el.message);
   const message = `המידע שהוזן לא תקין. ${errors.join('. ')}`;
+
   return new AppError(message, 400);
 };
 

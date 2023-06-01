@@ -98,6 +98,7 @@ export const confirmEmail = catchAsync(
     // 4) Log the user in, send welcome email & send JWT
     const urlSuccess = `${process.env.CLIENT_URL}/Admin/user/Profile`;
     await new Email(user, urlSuccess).sendWelcome();
+
     return createSendToken(user, 200, req, res);
   }
 );
