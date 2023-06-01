@@ -24,12 +24,12 @@ export default class Email {
     if (process.env.NODE_ENV === 'production') {
       // SendinBlue
       return nodemailer.createTransport({
-        // service: 'SendinBlue',
         host: process.env.SENDINBLUE_HOST,
         port: process.env.SENDINBLUE_PORT,
-        // auth: {
-        //   user: process.env.SENDINBLUE_USERNAME,
-        //   pass: process.env.SENDINBLUE_SMTP_KEY,
+        auth: {
+          user: process.env.SENDINBLUE_USERNAME,
+          pass: process.env.SENDINBLUE_SMTP_KEY,
+        },
       });
     }
 
