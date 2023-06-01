@@ -8,7 +8,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "merge": "git pull origin main && git merge main",
-    "huskyInit": "cd.. && npx husky install source/client/.husky",
+    "huskyInit": "cd.. && npx husky install && cd .husky/_ && del /f .gitignore",
     "lint": "npm run merge && npx prettier --write --cache --loglevel silent . && npx cspell --cache --no-progress ./**/* && npx eslint --fix . && npx tsc"
   },
   "devDependencies": {
