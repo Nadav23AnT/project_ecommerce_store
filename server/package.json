@@ -9,6 +9,7 @@
     "prod": "env-cmd -f .env.prod cross-env NODE_ENV=production node -r tsconfig-paths/register build/server.js",
     "build": "rimraf build && tsc --noEmit false && tsc-alias",
     "start": "cross-env NODE_ENV=production node build/server.js",
+    "huskyInit": "cd.. && npx husky install source/client/.husky",
     "merge": "git pull origin main && git merge main",
     "lint": "npm run merge && npx tsc && npx prettier --write --cache --loglevel silent . && npx cspell --cache --no-progress ./**/* && npx eslint --fix ."
   },
@@ -72,6 +73,7 @@
     "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.1.0",
+    "husky": "^8.0.3",
     "prettier": "^2.8.3",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.2",
