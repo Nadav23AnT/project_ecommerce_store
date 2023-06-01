@@ -36,6 +36,7 @@ const corsOptions: CorsOptions = {
   origin: (origin, callback) => {
     // (!origin) to allow Postman requests that comes with header: origin === undefined
     const allowPostman = !origin && process.env.NODE_ENV === 'development';
+
     return allowPostman || (origin && whitelist.indexOf(origin) !== -1)
       ? callback(null, true) // allow request
       : callback(new AppError(`Origin: ${origin} Not allowed by CORS`, 403)); // deny request

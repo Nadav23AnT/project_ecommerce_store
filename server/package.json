@@ -5,6 +5,7 @@
   "main": "server.ts",
   "scripts": {
     "dev": "env-cmd -f .env.dev ts-node-dev --watch .env.dev --require tsconfig-paths/register --transpile-only --respawn --inspect=4321 server.ts",
+    "seed": "env-cmd -f .env.dev ts-node-dev --require tsconfig-paths/register --transpile-only Seed/MockData/importDataToDB.ts",
     "prod": "env-cmd -f .env.prod cross-env NODE_ENV=production node -r tsconfig-paths/register build/server.js",
     "build": "rimraf build && tsc --noEmit false && tsc-alias",
     "start": "cross-env NODE_ENV=production node build/server.js",
