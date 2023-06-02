@@ -20,6 +20,7 @@ const {
   DATABASE_USERNAME,
   DATABASE_PASSWORD,
   DATABASE_NAME,
+  HOST,
 } = process.env;
 
 const DB_CONNECTION_STRING = DATABASE.replace(
@@ -39,7 +40,7 @@ mongoose.connect(DB_CONNECTION_STRING, () => {
 const port = NODE_ENV === 'development' ? PORT_DEV : PORT_PROD;
 
 const server = app.listen(port, () => {
-  console.log('\x1b[32m', `App running on port ${port}...`);
+  console.log('\x1b[32m', `App running on ${HOST}:${port}...`);
   console.log(`NODE_ENV: ${NODE_ENV}`);
 });
 
