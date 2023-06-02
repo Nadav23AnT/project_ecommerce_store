@@ -15,7 +15,7 @@ export interface IUsers {
   email: string;
   emailVerified: boolean;
   photo: string;
-  role: string;
+  role: 'admin' | 'user';
   phoneNumber: string;
   password?: string;
   passwordConfirm: string | undefined;

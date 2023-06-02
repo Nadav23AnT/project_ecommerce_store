@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { Model, Query } from 'mongoose';
+import { Model, PopulateOptions, Query } from 'mongoose';
 import catchAsync from '@Utils/catchAsync';
 import AppError from '@Utils/AppError';
 import APIFeatures from '@Utils/ApiFeatures';
@@ -9,13 +9,10 @@ export const createOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response) => {
     const doc = await Model.create(req.body);
 
-    return res.status(201).json({
-      status: 'success',
-      data: doc,
-    });
+    return res.status(201).json(doc);
   });
 
-export const getAll = <T>(Model: Model<T>, populateOptions?: object) =>
+export const getAll = <T>(Model: Model<T>, populateOptions?: PopulateOptions) =>
   catchAsync(async (req: Request, res: Response) => {
     // To allow for nested GET links of department (hack)
     let filter = {};
@@ -32,12 +29,7 @@ export const getAll = <T>(Model: Model<T>, populateOptions?: object) =>
 
     const doc = await features.query;
 
-    // SEND RESPONSE
-    return res.status(200).json({
-      status: 'success',
-      results: doc.length,
-      data: doc,
-    });
+    return res.status(200).json(doc);
   });
 
 export const getOne = <T>(
@@ -51,12 +43,9 @@ export const getOne = <T>(
 
     const doc = await query;
 
-    if (!doc) return next(new AppError('No document found with that ID', 404));
+    if (!doc) return next(new AppError('רשומה לא נמצאה', 404));
 
-    return res.status(200).json({
-      status: 'success',
-      data: doc,
-    });
+    return res.status(200).json(doc);
   });
 
 export const updateOne = <T>(Model: Model<T>) =>
@@ -65,9 +54,8 @@ export const updateOne = <T>(Model: Model<T>) =>
     delete req.body.id;
 
     const document = (await Model.findById(req.params.id)) as T;
-    if (!document) {
-      return next(new AppError('לא נמצאה רשומה', 404));
-    }
+    if (!document) return next(new AppError('רשומה לא נמצאה', 404));
+
     const oldImage = document[req.body.imageFieldName as keyof T] as string;
     const nameFolder = req.baseUrl.slice(req.baseUrl.lastIndexOf('/') + 1);
 
@@ -82,10 +70,7 @@ export const updateOne = <T>(Model: Model<T>) =>
       runValidators: true,
     });
 
-    return res.status(200).json({
-      status: 'success',
-      data: doc,
-    });
+    return res.status(200).json(doc);
   });
 
 export const bulkUpdate = <T>(Model: Model<T>) =>
@@ -105,17 +90,14 @@ export const bulkUpdate = <T>(Model: Model<T>) =>
     }
     const docs = await Promise.all(queries);
 
-    return res.status(200).json({
-      status: 'success',
-      data: docs,
-    });
+    return res.status(200).json(docs);
   });
 
 export const deleteOne = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
     if (!doc) {
-      return next(new AppError('No document found with that ID', 404));
+      return next(new AppError('רשומה לא נמצאה', 404));
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -134,7 +116,7 @@ export const deleteMany = <T>(Model: Model<T>) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
     const docs = await Model.deleteMany();
     if (!docs) {
-      return next(new AppError('No documents found, Nothing to Delete', 404));
+      return next(new AppError('רשומה לא נמצאה', 404));
     }
 
     return res.status(204).json({

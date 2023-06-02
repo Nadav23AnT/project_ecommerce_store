@@ -4,10 +4,11 @@ import { Schema, model, Query } from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
 import AppError from '@Utils/AppError';
-import { currentUser, IUsers } from '@Interfaces/userType';
+import { currentUser, IUsers } from '@Interfaces/IUsers';
 import { checkIsCorrectPhone, checkIsStrongPassword } from '@Utils/validations';
+import { TEN_MINUTES } from '@Utils/commonConstants';
 
-const userSchema: Schema = new Schema<IUsers>(
+const userSchema = new Schema<IUsers>(
   {
     firstName: {
       type: String,
@@ -43,7 +44,7 @@ const userSchema: Schema = new Schema<IUsers>(
       minlength: 9,
       validation: {
         validator: checkIsCorrectPhone,
-        message: " מס' טלפון לא תקין עליך להזין מס' טלפון בתבנית 050-000-0000",
+        message: "מס' טלפון לא תקין עליך להזין מס' טלפון בתבנית 050-000-0000",
       },
     },
     password: {
@@ -79,7 +80,6 @@ const userSchema: Schema = new Schema<IUsers>(
       select: false,
     },
   },
-
   {
     timestamps: true,
     toJSON: { virtuals: true },
@@ -87,11 +87,11 @@ const userSchema: Schema = new Schema<IUsers>(
   }
 );
 
-userSchema.virtual<IUsers>('name').get(function () {
+userSchema.virtual<IUsers>('name').get(function getFullUserName() {
   return `${this.firstName} ${this.lastName}`;
 });
 
-userSchema.pre<IUsers>('save', async function (next) {
+userSchema.pre<IUsers>('save', async function onModifyHashUserPassword(next) {
   // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
   if (this.password === undefined)
@@ -105,7 +105,8 @@ userSchema.pre<IUsers>('save', async function (next) {
   next();
 });
 
-userSchema.pre<IUsers>('save', function (next) {
+userSchema.pre<IUsers>('save', function setPasswordChangedAt(next) {
+  // Only run this function if password was actually modified || new user created
   if (!this.isModified('password') || this.isNew) return next();
 
   this.passwordChangedAt = Date.now() - 1000;
@@ -113,7 +114,7 @@ userSchema.pre<IUsers>('save', function (next) {
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-userSchema.pre<Query<any, IUsers>>(/^find/, function (next) {
+userSchema.pre<Query<any, IUsers>>(/^find/, function findOnlyActiveUsers(next) {
   // this points to the current query
   this.find({ active: { $ne: false } });
   next();
@@ -146,7 +147,7 @@ userSchema.methods.createPasswordResetToken = function () {
     .update(resetToken)
     .digest('hex');
 
-  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  this.passwordResetExpires = Date.now() + TEN_MINUTES;
 
   return resetToken;
 };

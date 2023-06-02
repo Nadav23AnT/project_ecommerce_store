@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import User from '@Models/userModel';
-import { IUsers } from '@Interfaces/userType';
+import { IUsers } from '@Interfaces/IUsers';
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import catchAsync from '@Utils/catchAsync';
 import AppError from '@Utils/AppError';
@@ -210,12 +210,10 @@ export const protect = catchAsync(
 );
 
 export const restrictTo =
-  (...roles: string[]) =>
-  (req: Request, res: Response, next: NextFunction) => {
-    // roles ['admin']. role='user'
-    if (!roles.includes(req.user.role as string)) {
+  (...roles: IUsers['role'][]) =>
+  (req: Request, _res: Response, next: NextFunction) => {
+    if (!roles.includes(req.user.role))
       return next(new AppError(`אין לך הרשאה לבצע פעולה זו!`, 403));
-    }
 
     next();
   };

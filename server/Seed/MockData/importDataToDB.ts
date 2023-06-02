@@ -1,9 +1,11 @@
 /* eslint-disable no-console */
+import Order from '@Models/orderModel';
 import User from '@Models/userModel';
 import dotenv from 'dotenv';
 import { readFileSync } from 'fs';
 import mongoose from 'mongoose';
 
+// 1) Connect to DB:
 const connection = mongoose.connection;
 
 dotenv.config();
@@ -26,13 +28,15 @@ mongoose.connect(DB_CONNECTION_STRING, () => {
 
 connection.once('open', () => seedData());
 
-// READ JSON FILES
+// 2) Read Json files:
 const users = JSON.parse(readFileSync(`${__dirname}/users.json`, 'utf-8'));
+const orders = JSON.parse(readFileSync(`${__dirname}/orders.json`, 'utf-8'));
 
 // IMPORT DATA INTO DB
 const importAllData = async () => {
   try {
     await User.create(users, { validateBeforeSave: false });
+    await Order.create(orders, { validateBeforeSave: false });
     console.log('Data seeded in DB!');
   } catch (err) {
     console.log(err);

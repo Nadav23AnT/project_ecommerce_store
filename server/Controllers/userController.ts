@@ -2,7 +2,7 @@ import { Request, Response, NextFunction, RequestHandler } from 'express';
 import User from '@Models/userModel';
 import catchAsync from '@Utils/catchAsync';
 import AppError from '@Utils/AppError';
-import { IUsers } from '@Interfaces/userType';
+import { IUsers } from '@Interfaces/IUsers';
 import removeImage from '@Utils/removeImage';
 import { getAll, getOne, updateOne, deleteOne } from './handlerFactory';
 

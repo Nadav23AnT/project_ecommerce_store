@@ -2,7 +2,7 @@
 import nodemailer from 'nodemailer';
 import pug from 'pug';
 import { convert } from 'html-to-text';
-import { IUsers } from '@Interfaces/userType';
+import { IUsers } from '@Interfaces/IUsers';
 
 export default class Email {
   public to: string;
