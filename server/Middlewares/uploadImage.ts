@@ -1,5 +1,5 @@
 import sharp from 'sharp';
-import { Request, Response, NextFunction, RequestHandler } from 'express';
+import { Request, RequestHandler } from 'express';
 import multer, { FileFilterCallback } from 'multer';
 import catchAsync from '@Utils/catchAsync';
 import AppError from '@Utils/AppError';
@@ -9,7 +9,7 @@ const multerStorage = multer.memoryStorage();
 
 // Check file type and determine whether it should be accepted or rejected.
 const multerFilter = (
-  req: Request,
+  _req: Request,
   file: Express.Multer.File,
   cb: FileFilterCallback
 ) => {
@@ -34,22 +34,20 @@ const upload = multer({
 export const uploadUserPhoto = upload.single('photo');
 export const uploadLogo = upload.single('logo');
 
-export const resizeUserPhoto = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    if (!req.file) return next();
+export const resizeUserPhoto = catchAsync(async (req, _res, next) => {
+  if (!req.file) return next();
 
-    req.file.filename = `user-${req.user._id}-${Date.now()}.jpeg`;
+  req.file.filename = `user-${req.user._id}-${Date.now()}.jpeg`;
 
-    const folderImage = req.baseUrl.slice(req.baseUrl.lastIndexOf('/') + 1);
-    await sharp(req.file.buffer)
-      .resize(500, 500)
-      .toFormat('jpeg')
-      .jpeg({ quality: 90 })
-      .toFile(`public/img/${folderImage}/${req.file.filename}`);
+  const folderImage = req.baseUrl.slice(req.baseUrl.lastIndexOf('/') + 1);
+  await sharp(req.file.buffer)
+    .resize(500, 500)
+    .toFormat('jpeg')
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/${folderImage}/${req.file.filename}`);
 
-    next();
-  }
-);
+  next();
+});
 
 export const setImageToField: RequestHandler = (req, res, next) => {
   if (req.file && !req.body.imageFieldName)

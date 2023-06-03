@@ -120,13 +120,15 @@ app.use('/api/orders', orderRouter);
 // app.use(`${api}/products`, productsRoutes);
 // app.use(`${api}/users`, usersRoutes);
 
-app.get('/', (req, res) => res.send(`Server is up and running v${version}`));
+app.get('/api/', (req, res) =>
+  res.send(`Server is up and running v${version}`)
+);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`הכתובת ${req.originalUrl} לא קיימת בשרת!`, 404));
 });
 
-// all new AppError errors will catch in this middleware and will be handled in errorController.js
+// all AppError instances errors will catch in this middleware and will be handled in errorController.js
 app.use(globalErrorHandler);
 
 export default app;

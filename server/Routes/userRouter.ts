@@ -29,27 +29,24 @@ import {
 
 const router = express.Router();
 
-router.post('/signup', signup);
-router.post('/login', login);
-router.get('/logout', logout);
-router.get('/csrfToken', csrfToken);
+router
+  .get('/csrfToken', csrfToken)
+  .post('/signup', signup)
+  .post('/login', login)
+  .post('/forgotPassword', forgotPassword)
+  .patch('/resetPassword/:token', resetPassword)
+  .post('/sendConfirmEmail', sendConfirmEmail)
 
-router.post('/forgotPassword', forgotPassword);
-router.patch('/resetPassword/:token', resetPassword);
-
-router.post('/sendConfirmEmail', sendConfirmEmail);
-
-// Protect all routes after this middleware. this routes is only for signed-in users.
-router.use(protect);
-
-router.post('/confirmEmail', confirmEmail);
-router.patch('/updateMyPassword', updatePassword);
-router.get('/me', getMe, getUser);
-router.patch('/updateMe', uploadUserPhoto, resizeUserPhoto, updateMe);
-router.delete('/deleteMe', deleteMe);
-
-// Restrict all this routes to Admin only.
-router.use(restrictTo('admin'));
+  .use(protect)
+  // Protect all this routes after this middleware. this routes is only for signed-in users.
+  .post('/confirmEmail', confirmEmail)
+  .patch('/updateMyPassword', updatePassword)
+  .get('/me', getMe, getUser)
+  .patch('/updateMe', uploadUserPhoto, resizeUserPhoto, updateMe)
+  .delete('/deleteMe', deleteMe)
+  .get('/logout', logout)
+  // Restrict all this routes to Admin only.
+  .use(restrictTo('admin'));
 
 router.route('/').get(getAllUsers);
 
