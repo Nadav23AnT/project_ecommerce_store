@@ -26,6 +26,7 @@ export const getOrder = getOne(Order, [
 ]);
 
 export const createOrder = catchAsync(async (req, res, next) => {
+  // 1) get all orderItem id's
   const orderItemsIds = Promise.all(
     (req.body.orderItems as IOrderItem[]).map(async (orderItem) => {
       const newOrderItem = await OrderItem.create({
@@ -39,6 +40,7 @@ export const createOrder = catchAsync(async (req, res, next) => {
 
   const orderItemsIdsResolved = await orderItemsIds;
 
+  // 2) calculate order's total price
   const totalPrices = await Promise.all(
     orderItemsIdsResolved.map(async (orderItemId) => {
       const orderItem = await OrderItem.findById(orderItemId).populate({
@@ -63,6 +65,7 @@ export const createOrder = catchAsync(async (req, res, next) => {
     0
   ) as number;
 
+  // 3) save order data in DB
   const order = await Order.create({
     orderItems: orderItemsIdsResolved,
     shippingAddress1: req.body.shippingAddress1,
