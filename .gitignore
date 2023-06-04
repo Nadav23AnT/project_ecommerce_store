@@ -11,6 +11,5 @@ client/.vite
 
 # server ignores:
 server/node_modules
-server/build
 server/package-lock.json
 server/.cspellcache

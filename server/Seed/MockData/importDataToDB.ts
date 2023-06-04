@@ -21,8 +21,8 @@ const DB_CONNECTION_STRING = DATABASE.replace(
   .replace('<DB_NAME>', DATABASE_NAME);
 
 // don't allow mongoose save fields that don't exist in model's schema
-mongoose.set('strictQuery', true);
-mongoose.connect(DB_CONNECTION_STRING, () => {
+mongoose.set('strictQuery', true).connect(DB_CONNECTION_STRING);
+mongoose.connection.on('connected', () => {
   console.log('DB connection successful!', '\x1b[0m');
 });
 
