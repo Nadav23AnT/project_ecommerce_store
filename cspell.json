@@ -18,7 +18,8 @@
   "useGitignore": true,
   "ignorePaths": [
     "*.{csproj,csproj.user,sln}",
-    "server/Seed/Postman Backup"
+    "server/Seed/Postman Backup",
+    "server/build"
   ],
   "words": [
     "Avichai",
