@@ -3,14 +3,7 @@ import OrderItem from '@Models/orderItemModel';
 import catchAsync from '@Utils/catchAsync';
 import AppError from '@Utils/AppError';
 import IOrderItem from '@Interfaces/IOrderItem';
-import {
-  getAll,
-  getOne,
-  updateOne,
-  deleteOne,
-  bulkUpdate,
-  deleteMany,
-} from './handlerFactory';
+import { getAll, getOne, updateOne } from './handlerFactory';
 
 export const getAllOrders = getAll(Order, { path: 'user', select: 'name' });
 
@@ -83,6 +76,36 @@ export const createOrder = catchAsync(async (req, res, next) => {
 });
 
 export const updateOrder = updateOne(Order);
-export const bulkUpdateOrders = bulkUpdate(Order);
-export const deleteOrder = deleteOne(Order);
-export const deleteManyOrders = deleteMany(Order);
+
+export const deleteOrder = catchAsync(async (req, res, next) => {
+  const order = await Order.findByIdAndDelete(req.params.id);
+  if (!order) return next(new AppError('רשומה לא נמצאה', 404));
+
+  if (order) {
+    try {
+      await Promise.all(
+        order.orderItems.map(async (orderItemId) =>
+          OrderItem.findByIdAndRemove(orderItemId)
+        )
+      );
+    } catch (error) {
+      return next(new AppError('בעיה במחיקת פריטים בהזמנה', 500));
+    }
+
+    return res.status(204).json({
+      data: null,
+    });
+  }
+});
+
+export const getOrderTotalSales = catchAsync(async (_req, res, next) => {
+  const totalSales = await Order.aggregate([
+    { $group: { _id: null, totalSales: { $sum: '$totalPrice' } } },
+  ]);
+
+  if (!totalSales) return next(new AppError('בעיה בחישוב מכירות כללי', 500));
+
+  return res.status(200).json({
+    totalSales: totalSales.pop().totalSales,
+  });
+});

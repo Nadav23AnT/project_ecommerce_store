@@ -44,7 +44,7 @@ const userSchema = new Schema<IUsers>(
       minlength: 9,
       validation: {
         validator: checkIsCorrectPhone,
-        message: "מס' טלפון לא תקין עליך להזין מס' טלפון בתבנית 050-000-0000",
+        message: "מס' טלפון לא תקין עליך להזין מס' טלפון בתבנית 05XXXXXXXX",
       },
     },
     password: {

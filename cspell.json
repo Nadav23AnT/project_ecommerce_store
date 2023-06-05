@@ -9,12 +9,17 @@
     "html",
     "typescript",
     "node",
-    "css"
+    "css",
+    "custom-dictionary"
   ],
-  "dictionaryDefinitions": [],
-  "import": [
-    "client/node_modules/@cspell/dict-he/cspell-ext.json"
+  "dictionaryDefinitions": [
+    {
+      "name": "custom-dictionary",
+      "path": "./.cspell/custom-dictionary.txt",
+      "addWords": true
+    }
   ],
+  "import": ["client/node_modules/@cspell/dict-he/cspell-ext.json"],
   "useGitignore": true,
   "ignorePaths": [
     "*.{csproj,csproj.user,sln}",
@@ -50,10 +55,13 @@
     "virtuals",
     "xcopy",
     "אילוז",
+    "בקבלת",
+    "בחישוב",
     "בבקשה",
     "בהזמנה",
     "ביצירת",
     "במועד",
+    "במחיקת",
     "במיילים",
     "בניתוב",
     "בעוד",

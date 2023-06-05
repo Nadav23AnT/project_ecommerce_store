@@ -44,6 +44,7 @@ const orderSchema = new Schema<IOrder>(
     status: {
       type: String,
       required: [true, 'חובה להזין סטטוס משלוח'],
+      enum: ['Pending', 'Shipping', 'Arrived'],
       default: 'Pending',
     },
     totalPrice: {
