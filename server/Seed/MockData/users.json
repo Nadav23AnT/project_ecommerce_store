@@ -1,0 +1,15 @@
+[
+  {
+    "_id": "64779bdbeae51be36ef1f187",
+    "firstName": "אביחי",
+    "lastName": "אילוז",
+    "email": "avichai997@gmail.com",
+    "emailVerified": false,
+    "photo": "default.jpg",
+    "role": "admin",
+    "password": "$2a$12$JDdmTdjfRUZY15uLdidclezc7jGBaAXCu90kJK/94caICywfYF9n6",
+    "active": true,
+    "emailConfirmToken": "df7bc6a5ab5d5d4c276af48f6a989ad9e94bc5ae4b023eeea968aab81d61c66c",
+    "resetToken": "eccb6b83bd3812af6e761d0b5dcf2ea92063b1682c5cd16bc036ad73aefc41b7"
+  }
+]

@@ -1,0 +1,3 @@
+// update all the documents where logo = 'defaultCustomerLogo.jpg' to 'defaultEnvironmentLogo.jpg':
+
+db.collectionName.updateMany({logo: 'defaultCustomerLogo.jpg'}, { $set: {logo: 'defaultEnvironmentLogo.jpg'} })
