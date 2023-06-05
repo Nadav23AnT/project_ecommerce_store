@@ -103,7 +103,7 @@ body {
 
 
 #hero {
-    background-image: url("images/hero4.png");
+    background-image: url("../../Assets/Images/hero4.png");
     height: 90vh;
     width: 100%;
     background-position: top 25% right 0;
@@ -124,7 +124,7 @@ body {
 }
 
 #hero button {
-    background-image: url("images/button.png");
+    background-image: url("../../Assets/Images/button.png");
     background-color: transparent;
     color: #088178;
     border: 0;
@@ -428,3 +428,49 @@ footer {
     width: 100%;
     text-align: center;
   }
+
+  /* start responsive work */
+  @media (max-width:799px)
+  {
+    #navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+
+
+  /* shop page */
+
+#page-header
+{
+    background-image: url(../../Assets/Images/b1.jpg);
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+
+#page-header h2, #page-header p {
+    color: #fff;
+}
+
+/* single product css */
+#prodetails .single-pro-image{
+    width: 40%;
+    margin-right: 50px;
+}
+
+#prodetails .single-pro-details{
+    width: 50%;
+    padding-top: 30px;
+}
+
+#prodetails{
+    display: flex;
+    margin-top: 20px;
+}
