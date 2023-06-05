@@ -470,7 +470,74 @@ footer {
     padding-top: 30px;
 }
 
+#prodetails .single-pro-details input{
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+#prodetails .single-pro-details input:focus{
+    outline: none;
+}
+
+#prodetails .single-pro-details button{
+    background-color: #088178;
+    color: #fff;
+    height: 60px;
+
+}
+
+
+#prodetails .single-pro-details button:hover{
+    background-color: #087199;
+    color: #fff;
+    height: 60px;
+    
+}
+#prodetails .single-pro-details span{
+
+}
+
 #prodetails{
     display: flex;
     margin-top: 20px;
 }
+
+.section-key-features {
+    margin-top: 20px;
+  }
+  
+  .key-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .key-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+  
+  .key-feature i {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  
+  .key-feature h5 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .key-feature p {
+    font-size: 14px;
+    color: #777777;
+  }
+  
