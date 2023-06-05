@@ -12,13 +12,7 @@
     "css",
     "custom-dictionary"
   ],
-  "dictionaryDefinitions": [
-    {
-      "name": "custom-dictionary",
-      "path": "./.cspell/custom-dictionary.txt",
-      "addWords": true
-    }
-  ],
+  "dictionaryDefinitions": [],
   "import": ["client/node_modules/@cspell/dict-he/cspell-ext.json"],
   "useGitignore": true,
   "ignorePaths": [
@@ -55,7 +49,7 @@
     "virtuals",
     "xcopy",
     "אילוז",
-    "בקבלת",
+    "בקבלתa",
     "בחישוב",
     "בבקשה",
     "בהזמנה",
