@@ -1,0 +1,47 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "restoreTerminals.terminals": [
+      {
+        "splitTerminals": [
+          {
+            "name": "server",
+            "commands": ["cd server", "npm run dev"]
+          },
+          {
+            "name": "client",
+            "commands": ["npm run huskyInit", "cd client", "npm run dev"]
+          }
+        ]
+      },
+      {
+        "splitTerminals": [
+          {
+            "name": "Lint server",
+            "commands": ["cd server"]
+          },
+          {
+            "name": "Lint client",
+            "commands": ["cd client"]
+          }
+        ]
+      }
+    ],
+    "typescript.tsdk": "Source/client/node_modules/typescript/lib",
+    "eslint.workingDirectories": [
+      {
+        "mode": "auto"
+      }
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "files.autoSave": "afterDelay",
+    "editor.mouseWheelZoom": true
+  }
+}

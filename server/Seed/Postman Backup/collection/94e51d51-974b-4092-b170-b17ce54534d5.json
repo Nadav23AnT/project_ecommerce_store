@@ -1,0 +1,289 @@
+{
+  "info": {
+    "_postman_id": "94e51d51-974b-4092-b170-b17ce54534d5",
+    "name": "Authentication",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET csrfToken",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "0aa24563-83ee-48ee-8645-52918b6894c9",
+            "exec": [
+              "pm.environment.set(\"csrfToken\", pm.response.json().data.csrfToken);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "ccee4678-9c51-4042-991d-811aa66d0525",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{URL}}/users/csrfToken",
+          "host": ["{{URL}}"],
+          "path": ["users", "csrfToken"]
+        },
+        "description": "We use this request to get a CSRF token from the backend to prevent coockies CSRF attack.\n\nAfter we get the token from the server we will send the token in each POST request we make to the server.\n\nThe process of attaching the token to the headers is configured in every collection \"Pre-request Script\" in postman. To view this click on \"edit\" collection in the 3 dots near the collection name. In there we will see the execution of the function that adds the token to the headers/\n\nThe function that does this is stored in an environment variable called \"CsrfToken\", and this function fires before every POST request."
+      },
+      "response": []
+    },
+    {
+      "name": "signup",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "99b7c728-7f91-4904-8899-18e925600d0a",
+            "exec": [
+              "pm.environment.set(\"token\", pm.response.json().token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "e5879bf7-31f1-45ff-9a21-0c14c0e0e080",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"אביחי אילוז\",\r\n    \"email\": \"avichai997@gmail.com\",\r\n    \"password\": \"pass1234\",\r\n    \"passwordConfirm\": \"pass1234\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/users/signup",
+          "host": ["{{URL}}"],
+          "path": ["users", "signup"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "30d4fae3-b5c5-4ac7-bb80-fd81a8aa4bbb",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "bb0d6827-a376-43ed-a8c1-bac0d08e09e2",
+            "exec": [
+              "pm.environment.set(\"token\", pm.response.json().token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "8f29aa16-78c0-4e45-95d9-efa8d0dc3f6d",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-CSRF-Token",
+            "value": "jngmgfmfgmgfmgf",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"avichai997@gmail.com\",\r\n  \"password\": \"Motorola3!\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/users/login",
+          "host": ["{{URL}}"],
+          "path": ["users", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "logout",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c520f82a-0de8-4da6-8cda-d45551e91ae8",
+            "exec": [
+              "pm.environment.set(\"token\", pm.response.json().token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "0d4ae4ca-4f0c-486c-bf92-de092dc212a2",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZWE3NTM5NDY0N2EwMjg1OWVkYjhkNyIsImlhdCI6MTY2NDc4Njc4OCwiZXhwIjoxNjcyNTYyNzg4fQ.4nzQsV36I6CgFs9AoeHTfUfABpRkCIdsU6wVMYgu7fM",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/users/logout",
+          "host": ["{{URL}}"],
+          "path": ["users", "logout"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Forgot Password",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "0a97813c-ddfd-401c-9d72-9709245f377c",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "e0caf88d-6cd7-431a-8bd7-cc89b9fdd9e8",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"avichai997@gmail.com\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/users/forgotPassword",
+          "host": ["{{URL}}"],
+          "path": ["users", "forgotPassword"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Reset Password",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "e855d1b3-432b-4e51-9601-ac5e128c4bf6",
+            "exec": [
+              "pm.environment.set(\"token\", pm.response.json().token);"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "f8cf6ac4-57fd-422b-9937-f355c08b6321",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": { "type": "noauth" },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"password\": \"pass12345\",\r\n    \"passwordConfirm\": \"pass12345\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/users/resetPassword/5b76a9f6be5f87892fd0f0f306a841aa2e40c48f52a260330b26ff33c00409d5",
+          "host": ["{{URL}}"],
+          "path": [
+            "users",
+            "resetPassword",
+            "5b76a9f6be5f87892fd0f0f306a841aa2e40c48f52a260330b26ff33c00409d5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Current User Password",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "ae880d20-789a-4cbb-9b2b-3ee5a073c2ab",
+            "exec": [""],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "ca35bb35-2aae-4680-9b31-82e1497c5cad",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+        },
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"passwordCurrent\": \"pass1234\",\r\n    \"password\": \"Motorola3!\",\r\n    \"passwordConfirm\": \"Motorola3!\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": {
+          "raw": "{{URL}}/users/updateMyPassword",
+          "host": ["{{URL}}"],
+          "path": ["users", "updateMyPassword"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "486d3d0b-1108-46f0-804f-ec1b27489c06",
+        "type": "text/javascript",
+        "exec": [
+          "// Pre POST requests to add a CSRF header from the CsrfToken variable script that is stored as an environment variable.",
+          "eval(pm.variables.get(\"prePostRequestAddCsrfHeader\"));",
+          "",
+          "// eval('if (pm.request.method === 'POST') {  pm.request.headers.add({key: 'X-CSRF-Token', value: pm.environment.get(\"csrfToken\") });}')"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "100bf634-9834-498d-a537-39d062c120a0",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ]
+}
