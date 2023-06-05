@@ -1,0 +1,21 @@
+[
+  {
+    "orderItems": [
+      {
+        "quantity": 3,
+        "product": "5fcfc406ae79b0a6a90d2585"
+      },
+      {
+        "quantity": 2,
+        "product": "5fd293c7d3abe7295b1403c4"
+      }
+    ],
+    "shippingAddress1": "נחושה הלוטם 43",
+    "shippingAddress2": "שדות מיכה 1",
+    "city": "נחושה",
+    "zip": "998183",
+    "country": "ישראל",
+    "phone": "+0504838353",
+    "user": "64779bdbeae51be36ef1f187"
+  }
+]

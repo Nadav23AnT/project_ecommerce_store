@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    // "module": "ESNext",
+    "types": ["node"],
+    "rootDir": "",
+    "moduleResolution": "Node",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./*"],
+      "@public/*": ["public/*"],
+      "@Controllers/*": ["Controllers/*"],
+      "@Middlewares/*": ["Middlewares/*"],
+      "@Models/*": ["Models/*"],
+      "@Routes/*": ["Routes/*"],
+      "@Interfaces/*": ["Interfaces/*"],
+      "@Utils/*": ["Utils/*"],
+      "@Views/*": ["Views/*"],
+      "@Seed/*": ["Seed/*"]
+    },
+    "allowJs": true,
+    "checkJs": true,
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [".", ".eslintrc.cjs"],
+  "exclude": ["node_modules", "build", "Seed/Postman Backup"]
+}
