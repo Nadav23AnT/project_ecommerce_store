@@ -14,9 +14,7 @@ const router = express.Router();
 router
   .route('/')
   .get(getAllOrders)
-  .post(protect, restrictTo('admin'), createOrder)
-  .patch(protect, restrictTo('admin'), bulkUpdateOrders)
-  .delete(protect, restrictTo('admin'), deleteManyOrders);
+  .post(protect, restrictTo('admin'), createOrder);
 
 router
   .route('/:id')
