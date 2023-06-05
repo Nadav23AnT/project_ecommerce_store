@@ -95,7 +95,7 @@ body {
 }
 
 #hero {
-  background-image: url('../Assets/Images/hero4.png');
+  background-image: url('../../Assets/Images/hero4.png');
   height: 90vh;
   width: 100%;
   background-position: top 25% right 0;
@@ -116,7 +116,7 @@ body {
 }
 
 #hero button {
-  background-image: url('../Assets/Images/button.png');
+  background-image: url('../../Assets/Images/button.png');
   background-color: transparent;
   color: #088178;
   border: 0;
@@ -345,4 +345,111 @@ a {
   align-items: center;
   text-align: center;
   background-image: url('');
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+footer .col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+footer .logo {
+  margin-bottom: 30px;
+}
+
+footer h4 {
+  font-size: 14px;
+  padding-bottom: 20px;
+}
+
+footer p {
+  font-size: 13px;
+  margin: 0 0 8px 0;
+}
+
+footer a {
+  font-size: 13px;
+  text-decoration: none;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+footer .follow {
+  margin-top: 20px;
+}
+
+footer .follow i {
+  color: #088178;
+  padding-right: 4px;
+  cursor: pointer;
+}
+
+footer .install .row img {
+  border: 1px solid #088178;
+  border-radius: 6px;
+}
+
+footer .install {
+  margin: 10px 0 15px 0;
+}
+
+footer .follow i:hover,
+footer a:hover {
+  color: aqua;
+}
+
+footer .copyright {
+  width: 100%;
+  text-align: center;
+}
+
+/* start responsive work */
+@media (max-width: 799px) {
+  #navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* shop page */
+
+#page-header {
+  background-image: url(../../Assets/Images/b1.jpg);
+  height: 300px;
+  width: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 14px;
+}
+
+#page-header h2,
+#page-header p {
+  color: #fff;
+}
+
+/* single product css */
+#prodetails .single-pro-image {
+  width: 40%;
+  margin-right: 50px;
+}
+
+#prodetails .single-pro-details {
+  width: 50%;
+  padding-top: 30px;
+}
+
+#prodetails {
+  display: flex;
+  margin-top: 20px;
 }
