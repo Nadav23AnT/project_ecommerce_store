@@ -1,12 +1,19 @@
 import { defineConfig } from 'vite';
-import { OPEN_URL, PORT } from './src/Common/CommonConstants';
+import { PORT } from './src/Common/CommonConstants';
 
 export default defineConfig({
+  root: 'src',
+  publicDir: './../public',
+  build: {
+    outDir: '../build',
+    rollupOptions: {
+      input: {
+        app: './src/Pages/index.html',
+      },
+    },
+  },
   server: {
     port: PORT,
-    open: OPEN_URL,
-  },
-  build: {
-    outDir: 'build',
+    open: './Pages/index.html',
   },
 });
