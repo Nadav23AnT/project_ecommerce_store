@@ -37,6 +37,8 @@
         "mode": "auto"
       }
     ],
+    "eslint.enable": true,
+    "eslint.validate": ["typescript", "javascript", "html"],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnType": true,
     "editor.formatOnSave": true,

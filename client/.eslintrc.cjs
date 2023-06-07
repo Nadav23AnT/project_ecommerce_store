@@ -10,10 +10,16 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:@cspell/recommended',
   ],
-  plugins: ['html', 'prettier'],
+  plugins: ['html', '@html-eslint', 'prettier'],
   ignorePatterns: ['build'],
   root: true,
-  overrides: [],
+  overrides: [
+    {
+      files: ['*.html'],
+      parser: '@html-eslint/parser',
+      extends: ['plugin:@html-eslint/recommended'],
+    },
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
