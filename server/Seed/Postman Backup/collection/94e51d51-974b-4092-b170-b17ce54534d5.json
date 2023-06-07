@@ -12,9 +12,7 @@
           "listen": "test",
           "script": {
             "id": "0aa24563-83ee-48ee-8645-52918b6894c9",
-            "exec": [
-              "pm.environment.set(\"csrfToken\", pm.response.json().data.csrfToken);"
-            ],
+            "exec": ["pm.environment.set(\"csrfToken\", pm.response.json().data.csrfToken);"],
             "type": "text/javascript"
           }
         }
@@ -44,9 +42,7 @@
           "listen": "test",
           "script": {
             "id": "99b7c728-7f91-4904-8899-18e925600d0a",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }
@@ -84,9 +80,7 @@
           "listen": "test",
           "script": {
             "id": "bb0d6827-a376-43ed-a8c1-bac0d08e09e2",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }
@@ -124,9 +118,7 @@
           "listen": "test",
           "script": {
             "id": "c520f82a-0de8-4da6-8cda-d45551e91ae8",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }
@@ -198,9 +190,7 @@
           "listen": "test",
           "script": {
             "id": "e855d1b3-432b-4e51-9601-ac5e128c4bf6",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }

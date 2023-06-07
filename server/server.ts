@@ -23,10 +23,7 @@ const {
   HOST,
 } = process.env;
 
-const DB_CONNECTION_STRING = DATABASE.replace(
-  '<DB_USERNAME>',
-  DATABASE_USERNAME
-)
+const DB_CONNECTION_STRING = DATABASE.replace('<DB_USERNAME>', DATABASE_USERNAME)
   .replace('<DB_PASSWORD>', DATABASE_PASSWORD)
   .replace('<DB_NAME>', DATABASE_NAME);
 

@@ -54,8 +54,7 @@ const userSchema = new Schema<IUsers>(
       select: false,
       validate: {
         validator: checkIsStrongPassword,
-        message:
-          'סיסמה לא תקינה, על הסיסמה להכיל 8 תווים ביניהם אות גדולה, קטנה, מספרים ותו מיוחד',
+        message: 'סיסמה לא תקינה, על הסיסמה להכיל 8 תווים ביניהם אות גדולה, קטנה, מספרים ותו מיוחד',
       },
     },
     passwordConfirm: {
@@ -94,8 +93,7 @@ userSchema.virtual<IUsers>('name').get(function getFullUserName() {
 userSchema.pre<IUsers>('save', async function onModifyHashUserPassword(next) {
   // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
-  if (this.password === undefined)
-    return next(new AppError('Password is undefined', 403));
+  if (this.password === undefined) return next(new AppError('Password is undefined', 403));
 
   // Hash the password with cost of 12
   this.password = await bcrypt.hash(this.password, 12);
@@ -129,8 +127,7 @@ userSchema.methods.correctPassword = async function (
 
 userSchema.methods.changedPasswordAfter = function (JWTTimestamp: number) {
   if (this.passwordChangedAt) {
-    const changedTimestamp =
-      parseInt(this.passwordChangedAt.getTime(), 10) / 1000;
+    const changedTimestamp = parseInt(this.passwordChangedAt.getTime(), 10) / 1000;
 
     return JWTTimestamp < changedTimestamp;
   }
@@ -142,10 +139,7 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp: number) {
 userSchema.methods.createPasswordResetToken = function () {
   const resetToken = crypto.randomBytes(32).toString('hex');
 
-  this.passwordResetToken = crypto
-    .createHash('sha256')
-    .update(resetToken)
-    .digest('hex');
+  this.passwordResetToken = crypto.createHash('sha256').update(resetToken).digest('hex');
 
   this.passwordResetExpires = Date.now() + TEN_MINUTES;
 
@@ -157,10 +151,7 @@ userSchema.methods.createEmailConfirmToken = function () {
 
   this.resetToken = resetTokenEmail;
 
-  this.emailConfirmToken = crypto
-    .createHash('sha256')
-    .update(resetTokenEmail)
-    .digest('hex');
+  this.emailConfirmToken = crypto.createHash('sha256').update(resetTokenEmail).digest('hex');
 
   return resetTokenEmail;
 };

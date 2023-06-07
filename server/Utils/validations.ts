@@ -2,8 +2,7 @@ import validator from 'validator';
 
 const phoneRegExp =
   /^(?:(?:(\+?972|\(\+?972\)|\+?\(972\))(?:\s|\.|-)?([1-9]\d?))|(0[5]{1}[01234578]))(?:\s|\.|-)?([^0\D]{1}\d{2}(?:\s|\.|-)?\d{4})$/gm;
-const passwordRegExp =
-  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+const passwordRegExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 
 export const checkIsURL = (url: string) =>
   validator.isURL(url, {
@@ -24,8 +23,6 @@ export const checkIsURL = (url: string) =>
     // validate_length: true // if set as false isURL will skip string length validation (2083 characters is IE max URL length).
   });
 
-export const checkIsStrongPassword = (password: string) =>
-  passwordRegExp.test(password);
+export const checkIsStrongPassword = (password: string) => passwordRegExp.test(password);
 
-export const checkIsCorrectPhone = (phoneNumber: string) =>
-  phoneRegExp.test(phoneNumber);
+export const checkIsCorrectPhone = (phoneNumber: string) => phoneRegExp.test(phoneNumber);

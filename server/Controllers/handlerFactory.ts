@@ -13,10 +13,7 @@ export const createOne = <T>(Model: Model<T>) =>
     return res.status(201).json(doc);
   });
 
-export const getAll = <T>(
-  Model: Model<T>,
-  populateOptions?: IPopulateOptions
-) =>
+export const getAll = <T>(Model: Model<T>, populateOptions?: IPopulateOptions) =>
   catchAsync(async (req, res) => {
     // To allow for nested GET links of department (hack)
     let filter = {};
@@ -28,18 +25,14 @@ export const getAll = <T>(
       .limitFields()
       .paginate();
 
-    if (populateOptions)
-      features.query = features.query.populate(populateOptions);
+    if (populateOptions) features.query = features.query.populate(populateOptions);
 
     const doc = await features.query;
 
     return res.status(200).json(doc);
   });
 
-export const getOne = <T>(
-  Model: Model<T>,
-  populateOptions?: IPopulateOptions
-) =>
+export const getOne = <T>(Model: Model<T>, populateOptions?: IPopulateOptions) =>
   catchAsync(async (req, res, next: NextFunction) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let query: Query<any, T> = Model.findById(req.params.id);
@@ -63,10 +56,7 @@ export const updateOne = <T>(Model: Model<T>) =>
     const oldImage = document[req.body.imageFieldName as keyof T] as string;
     const nameFolder = req.baseUrl.slice(req.baseUrl.lastIndexOf('/') + 1);
 
-    if (
-      req.body[req.body.imageFieldName] &&
-      oldImage !== req.body[req.body.imageFieldName]
-    )
+    if (req.body[req.body.imageFieldName] && oldImage !== req.body[req.body.imageFieldName])
       removeImage(oldImage, nameFolder);
 
     const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {

@@ -95,7 +95,7 @@ body {
 }
 
 #hero {
-  background-image: url('../../Assets/Images/hero4.png');
+  background-image: url('../Assets/Images/Backgrounds/hero4.png');
   height: 90vh;
   width: 100%;
   background-position: top 25% right 0;
@@ -116,7 +116,7 @@ body {
 }
 
 #hero button {
-  background-image: url('../../Assets/Images/button.png');
+  background-image: url('../Assets/Images/Backgrounds/button.png');
   background-color: transparent;
   color: #088178;
   border: 0;
@@ -128,7 +128,7 @@ body {
 }
 
 #hero button:hover {
-  background-image: url('../../Assets/Images/button.png');
+  background-image: url('../Assets/Images/Backgrounds/button.png');
   background-color: transparent;
   color: #088178;
   border: 0;
@@ -437,7 +437,7 @@ footer .copyright {
 /* shop page */
 
 #page-header {
-  background-image: url(../../Assets/Images/b1.jpg);
+  background-image: url(../Assets/Images/Backgrounds/b1.jpg);
   height: 300px;
   width: 100%;
   background-size: cover;
