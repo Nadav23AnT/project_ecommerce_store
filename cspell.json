@@ -13,7 +13,9 @@
     "custom-dictionary"
   ],
   "dictionaryDefinitions": [],
-  "import": ["client/node_modules/@cspell/dict-he/cspell-ext.json"],
+  "import": [
+    "client/node_modules/@cspell/dict-he/cspell-ext.json"
+  ],
   "useGitignore": true,
   "ignorePaths": [
     "*.{csproj,csproj.user,sln}",
@@ -36,8 +38,10 @@
     "loglevel",
     "Middlewares",
     "multistatus",
+    "NGenuity",
     "plusplus",
     "PROPPATCH",
+    "Quantom",
     "Rishon",
     "RUZY",
     "Sendgrid",
@@ -49,10 +53,9 @@
     "virtuals",
     "xcopy",
     "אילוז",
-    "בקבלתa",
-    "בחישוב",
     "בבקשה",
     "בהזמנה",
+    "בחישוב",
     "ביצירת",
     "במועד",
     "במחיקת",
@@ -60,6 +63,7 @@
     "בניתוב",
     "בעוד",
     "בפורמט",
+    "בקבלתa",
     "בשליחת",
     "בשרת",
     "בתבנית",

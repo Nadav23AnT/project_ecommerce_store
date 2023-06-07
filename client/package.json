@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "merge": "git pull origin main && git merge main",
     "huskyInit": "cd.. && npx husky install && cd .husky/_ && del /f .gitignore",
-    "lint": "npx tsc && npx prettier --write --cache --loglevel silent . && npx cspell --cache --no-progress ./**/* && npx eslint --fix ."
+    "lint": "npx tsc && npx prettier --write --cache --loglevel silent . && npx cspell --cache --no-progress . && npx eslint --fix ."
   },
   "devDependencies": {
     "@cspell/dict-he": "^2.0.0",
@@ -20,6 +20,7 @@
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-html": "^7.1.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",
     "eslint-plugin-prettier": "^4.2.1",

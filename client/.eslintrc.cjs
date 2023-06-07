@@ -10,7 +10,7 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:@cspell/recommended',
   ],
-  plugins: ['prettier'],
+  plugins: ['html', 'prettier'],
   ignorePatterns: ['build'],
   root: true,
   overrides: [],
