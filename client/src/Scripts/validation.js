@@ -1,7 +1,6 @@
 // validation.js
 
 function validateForm() {
-  console.log('Form validation is being executed.');
   var name = document.forms['signupForm']['name'].value;
   var email = document.forms['signupForm']['email'].value;
   var password = document.forms['signupForm']['password'].value;
