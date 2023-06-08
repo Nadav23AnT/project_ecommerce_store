@@ -1,7 +1,8 @@
 {
   "info": {
-    "_postman_id": "94e51d51-974b-4092-b170-b17ce54534d5",
-    "name": "Authentication",
+    "_postman_id": "f7641d29-4e4d-4122-999f-299dfa070ac7",
+    "name": "E-commerce Authentication",
+    "description": "For E-commerce Project",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -11,15 +12,13 @@
         {
           "listen": "test",
           "script": {
-            "id": "0aa24563-83ee-48ee-8645-52918b6894c9",
-            "exec": [
-              "pm.environment.set(\"csrfToken\", pm.response.json().data.csrfToken);"
-            ],
+            "id": "2f3b8a26-97f8-4e2a-9933-23dfc6db6231",
+            "exec": ["pm.environment.set(\"csrfToken\", pm.response.json().data.csrfToken);"],
             "type": "text/javascript"
           }
         }
       ],
-      "id": "ccee4678-9c51-4042-991d-811aa66d0525",
+      "id": "ab2f5208-511c-40cb-a195-93f2cabfa212",
       "protocolProfileBehavior": { "disableBodyPruning": true },
       "request": {
         "auth": {
@@ -43,29 +42,23 @@
         {
           "listen": "test",
           "script": {
-            "id": "99b7c728-7f91-4904-8899-18e925600d0a",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "id": "3f4b0d61-2469-44df-8c28-f44477f9a864",
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }
       ],
-      "id": "e5879bf7-31f1-45ff-9a21-0c14c0e0e080",
+      "id": "4e1c1127-141e-4309-ba71-d67f7706c2e4",
       "protocolProfileBehavior": { "disableBodyPruning": true },
       "request": {
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"name\": \"אביחי אילוז\",\r\n    \"email\": \"avichai997@gmail.com\",\r\n    \"password\": \"pass1234\",\r\n    \"passwordConfirm\": \"pass1234\"\r\n}",
+          "raw": "{\r\n    \"firstName\": \"אביחי\",\r\n    \"lastName\": \"אילוז\",\r\n    \"email\": \"avichai997@gmail.com\",\r\n    \"password\": \"Aa123456!\",\r\n    \"passwordConfirm\": \"Aa123456!\"\r\n}",
           "options": { "raw": { "language": "json" } }
         },
-        "url": {
-          "raw": "{{URL}}/users/signup",
-          "host": ["{{URL}}"],
-          "path": ["users", "signup"]
-        }
+        "url": { "raw": "{{URL}}/users/signup", "host": ["{{URL}}"], "path": ["users", "signup"] }
       },
       "response": []
     },
@@ -75,7 +68,7 @@
         {
           "listen": "prerequest",
           "script": {
-            "id": "30d4fae3-b5c5-4ac7-bb80-fd81a8aa4bbb",
+            "id": "b795665c-ec40-4f92-b9d4-bb2b84cddce7",
             "exec": [""],
             "type": "text/javascript"
           }
@@ -83,36 +76,55 @@
         {
           "listen": "test",
           "script": {
-            "id": "bb0d6827-a376-43ed-a8c1-bac0d08e09e2",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "id": "a4df3c0a-0ef0-4b97-b063-daad55a3e11e",
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }
       ],
-      "id": "8f29aa16-78c0-4e45-95d9-efa8d0dc3f6d",
+      "id": "e8c1f98b-8fb8-4d15-b701-356f5d8ba21c",
       "protocolProfileBehavior": { "disableBodyPruning": true },
       "request": {
         "auth": { "type": "noauth" },
         "method": "POST",
         "header": [
-          {
-            "key": "X-CSRF-Token",
-            "value": "jngmgfmfgmgfmgf",
-            "type": "text",
-            "disabled": true
-          }
+          { "key": "X-CSRF-Token", "value": "jngmgfmfgmgfmgf", "type": "text", "disabled": true }
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"email\": \"avichai997@gmail.com\",\r\n  \"password\": \"Motorola3!\"\r\n}",
+          "raw": "{\r\n  \"email\": \"avichai997@gmail.com\",\r\n  \"password\": \"Aa123456!\"\r\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": { "raw": "{{URL}}/users/login", "host": ["{{URL}}"], "path": ["users", "login"] }
+      },
+      "response": []
+    },
+    {
+      "name": "confirm email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "3f4b0d61-2469-44df-8c28-f44477f9a864",
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "id": "31be723b-6d1b-4c3e-a278-dffeb3a2c801",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"avichai997@gmail.com\",\r\n    \"token\": \"df7bc6a5ab5d5d4c276af48f6a989ad9e94bc5ae4b023eeea968aab81d61c66c\"\r\n}",
           "options": { "raw": { "language": "json" } }
         },
         "url": {
-          "raw": "{{URL}}/users/login",
+          "raw": "{{URL}}/users/confirmEmail",
           "host": ["{{URL}}"],
-          "path": ["users", "login"]
+          "path": ["users", "confirmEmail"]
         }
       },
       "response": []
@@ -123,15 +135,13 @@
         {
           "listen": "test",
           "script": {
-            "id": "c520f82a-0de8-4da6-8cda-d45551e91ae8",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "id": "5c77eb29-3c39-43f7-99b4-32d6093af991",
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }
       ],
-      "id": "0d4ae4ca-4f0c-486c-bf92-de092dc212a2",
+      "id": "1706d9a6-302c-4f75-9466-2f3f4f090c4e",
       "protocolProfileBehavior": { "disableBodyPruning": true },
       "request": {
         "auth": {
@@ -147,16 +157,8 @@
             "disabled": true
           }
         ],
-        "body": {
-          "mode": "raw",
-          "raw": "",
-          "options": { "raw": { "language": "json" } }
-        },
-        "url": {
-          "raw": "{{URL}}/users/logout",
-          "host": ["{{URL}}"],
-          "path": ["users", "logout"]
-        }
+        "body": { "mode": "raw", "raw": "", "options": { "raw": { "language": "json" } } },
+        "url": { "raw": "{{URL}}/users/logout", "host": ["{{URL}}"], "path": ["users", "logout"] }
       },
       "response": []
     },
@@ -166,13 +168,13 @@
         {
           "listen": "test",
           "script": {
-            "id": "0a97813c-ddfd-401c-9d72-9709245f377c",
+            "id": "b25e7a4f-a8e3-4651-a717-f449fdb94004",
             "exec": [""],
             "type": "text/javascript"
           }
         }
       ],
-      "id": "e0caf88d-6cd7-431a-8bd7-cc89b9fdd9e8",
+      "id": "9820239c-4c2c-4970-90f4-daf59ea35dfd",
       "protocolProfileBehavior": { "disableBodyPruning": true },
       "request": {
         "auth": { "type": "noauth" },
@@ -197,15 +199,13 @@
         {
           "listen": "test",
           "script": {
-            "id": "e855d1b3-432b-4e51-9601-ac5e128c4bf6",
-            "exec": [
-              "pm.environment.set(\"token\", pm.response.json().token);"
-            ],
+            "id": "d30f1090-9c68-4ff2-9371-886bf5975441",
+            "exec": ["pm.environment.set(\"token\", pm.response.json().token);"],
             "type": "text/javascript"
           }
         }
       ],
-      "id": "f8cf6ac4-57fd-422b-9937-f355c08b6321",
+      "id": "9a076d80-e2dd-450a-a78e-4b9ce572d71c",
       "protocolProfileBehavior": { "disableBodyPruning": true },
       "request": {
         "auth": { "type": "noauth" },
@@ -234,13 +234,13 @@
         {
           "listen": "test",
           "script": {
-            "id": "ae880d20-789a-4cbb-9b2b-3ee5a073c2ab",
+            "id": "b3a026f0-3c96-40c3-86fb-d607fbb4e060",
             "exec": [""],
             "type": "text/javascript"
           }
         }
       ],
-      "id": "ca35bb35-2aae-4680-9b31-82e1497c5cad",
+      "id": "697070c1-3531-4649-b805-892fea9c0004",
       "protocolProfileBehavior": { "disableBodyPruning": true },
       "request": {
         "auth": {
@@ -261,13 +261,24 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Server health check",
+      "id": "25cfbb2c-6a04-4139-8d32-1e59417f8bd1",
+      "protocolProfileBehavior": { "disableBodyPruning": true },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{URL}}/", "host": ["{{URL}}"], "path": [""] }
+      },
+      "response": []
     }
   ],
   "event": [
     {
       "listen": "prerequest",
       "script": {
-        "id": "486d3d0b-1108-46f0-804f-ec1b27489c06",
+        "id": "5a954ecf-d040-4e05-9318-61d5f73f145c",
         "type": "text/javascript",
         "exec": [
           "// Pre POST requests to add a CSRF header from the CsrfToken variable script that is stored as an environment variable.",
@@ -280,7 +291,7 @@
     {
       "listen": "test",
       "script": {
-        "id": "100bf634-9834-498d-a537-39d062c120a0",
+        "id": "f584aac8-d694-4670-ae65-9c0b39cba235",
         "type": "text/javascript",
         "exec": [""]
       }

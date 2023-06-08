@@ -8,11 +8,7 @@ import AppError from '@Utils/AppError';
 const multerStorage = multer.memoryStorage();
 
 // Check file type and determine whether it should be accepted or rejected.
-const multerFilter = (
-  _req: Request,
-  file: Express.Multer.File,
-  cb: FileFilterCallback
-) => {
+const multerFilter = (_req: Request, file: Express.Multer.File, cb: FileFilterCallback) => {
   if (file.mimetype.startsWith('image')) {
     cb(null, true);
   } else {
@@ -51,9 +47,7 @@ export const resizeUserPhoto = catchAsync(async (req, _res, next) => {
 
 export const setImageToField: RequestHandler = (req, res, next) => {
   if (req.file && !req.body.imageFieldName)
-    return next(
-      new AppError(`imageFieldName התמונה לא נשמרה מאחר שלא הוכנס שדה `, 403)
-    );
+    return next(new AppError(`imageFieldName התמונה לא נשמרה מאחר שלא הוכנס שדה `, 403));
 
   if (req.file) req.body[req.body.imageFieldName] = req.file?.filename;
   next();

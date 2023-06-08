@@ -21,11 +21,7 @@ import {
   restrictTo,
   sendConfirmEmail,
 } from '@Controllers/authController';
-import {
-  uploadUserPhoto,
-  resizeUserPhoto,
-  setImageToField,
-} from '@Middlewares/uploadImage';
+import { uploadUserPhoto, resizeUserPhoto, setImageToField } from '@Middlewares/uploadImage';
 
 const router = express.Router();
 

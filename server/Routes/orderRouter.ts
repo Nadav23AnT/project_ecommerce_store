@@ -11,10 +11,7 @@ import { protect, restrictTo } from '@Controllers/authController';
 
 const router = express.Router();
 
-router
-  .route('/')
-  .get(getAllOrders)
-  .post(protect, restrictTo('admin'), createOrder);
+router.route('/').get(getAllOrders).post(protect, restrictTo('admin'), createOrder);
 
 router
   .route('/:id')

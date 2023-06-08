@@ -75,9 +75,6 @@ export default class Email {
   }
 
   async sendPasswordReset() {
-    await this.send(
-      'passwordReset',
-      'הסיסמה הזמנית שלך לאיפוס הסיסמה (תקף ל10 דקות)'
-    );
+    await this.send('passwordReset', 'הסיסמה הזמנית שלך לאיפוס הסיסמה (תקף ל10 דקות)');
   }
 }

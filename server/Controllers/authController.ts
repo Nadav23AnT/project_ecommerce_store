@@ -16,12 +16,7 @@ const signToken = (id: string | ObjectId) =>
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 
-const createSendToken = (
-  user: IUsers,
-  statusCode: number,
-  req: Request,
-  res: Response
-) => {
+const createSendToken = (user: IUsers, statusCode: number, req: Request, res: Response) => {
   const token = signToken(user._id);
   const tokenExpiration = new Date(
     Date.now() + parseFloat(String(process.env.JWT_COOKIE_EXPIRES_IN)) * DAY
@@ -106,16 +101,14 @@ export const sendConfirmEmail = catchAsync(
   async (req, res, next) => {
     const { email } = req.body;
 
-    if (!email)
-      return next(new AppError('המייל לא תקין אנא  הכנס מייל תקין', 400));
+    if (!email) return next(new AppError('המייל לא תקין אנא  הכנס מייל תקין', 400));
 
     // 2) Check if user exists or verified
     const user = await User.findOne({
       email,
     });
     if (!user) return next(new AppError('המשתמש המבוקש אינו קיים .', 401));
-    if (user.emailVerified === true)
-      return next(new AppError('חשבון המשתמש כבר אומת', 401));
+    if (user.emailVerified === true) return next(new AppError('חשבון המשתמש כבר אומת', 401));
 
     // 3) Update emailVerified property for the user
     const url = `${process.env.CLIENT_URL}/ConfirmEmail/${user.email}/Verify/${user.resetToken}`;
@@ -129,18 +122,12 @@ export const login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   // 1) Check if email and password exist
-  if (!email || !password) {
-    return next(
-      new AppError('כתובת מייל או סיסמה חסרים! יש לנסות שוב מחדש.', 400)
-    );
-  }
+  if (!email || !password)
+    return next(new AppError('כתובת מייל או סיסמה חסרים! יש לנסות שוב מחדש.', 400));
 
   // 2) Check if user exists && password is correct
   const user = await User.findOne({ email }).select('+password');
-  if (
-    !user ||
-    (user.password && !user.correctPassword(password, user.password))
-  ) {
+  if (!user || (user.password && !user.correctPassword(password, user.password))) {
     return next(
       new AppError(
         `הסיסמה או כתובת המייל שהוזנו לא נכונים! נותרו עוד ${req.rateLimit.remaining} נסיונות להתחברות`,
@@ -163,9 +150,7 @@ export const logout: RequestHandler = (req, res) => {
 };
 
 export const csrfToken: RequestHandler = (req, res) => {
-  res
-    .status(200)
-    .json({ status: 'success', data: { csrfToken: req.csrfToken() } });
+  res.status(200).json({ status: 'success', data: { csrfToken: req.csrfToken() } });
 };
 
 export const protect = catchAsync(async (req, res, next) => {
@@ -173,15 +158,11 @@ export const protect = catchAsync(async (req, res, next) => {
   let token;
   if (req.cookies.token) token = req.cookies.token;
   // for token in headers
-  else if (
-    req.headers.authorization &&
-    req.headers.authorization.startsWith('Bearer')
-  ) {
+  else if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
     token = req.headers.authorization.split(' ')[1];
   }
 
-  if (!token)
-    return next(new AppError('אתה לא מחובר! בבקשה התחבר כדי לקבל גישה.', 401));
+  if (!token) return next(new AppError('אתה לא מחובר! בבקשה התחבר כדי לקבל גישה.', 401));
 
   // 2) Verification token
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -238,21 +219,13 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
 
-    return next(
-      new AppError(
-        'הייתה בעיה בשליחת המייל לאיפוס סיסמה, נסה שוב מאוחר יותר!',
-        500
-      )
-    );
+    return next(new AppError('הייתה בעיה בשליחת המייל לאיפוס סיסמה, נסה שוב מאוחר יותר!', 500));
   }
 });
 
 export const resetPassword = catchAsync(async (req, res, next) => {
   // 1) Get user based on the token
-  const hashedToken = crypto
-    .createHash('sha256')
-    .update(req.params.token)
-    .digest('hex');
+  const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex');
 
   const user = await User.findOne({
     passwordResetToken: hashedToken,
@@ -282,10 +255,7 @@ export const updatePassword = catchAsync(async (req, res, next) => {
   if (!user) return next(new AppError('משתמש לא קיים', 404));
 
   // 2) Check if POSTed current password is correct
-  if (
-    user.password &&
-    !user.correctPassword(req.body.passwordCurrent, user.password)
-  ) {
+  if (user.password && !user.correctPassword(req.body.passwordCurrent, user.password)) {
     return next(new AppError('הסיסמה שהוזנה שגויה.', 401));
   }
 

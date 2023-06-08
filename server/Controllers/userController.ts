@@ -30,10 +30,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error if user POSTs password data
   if (req.body.password || req.body.passwordConfirm) {
     return next(
-      new AppError(
-        'הניתוב הזה לא מיועד לעדכון סיסמה! השתמש בניתוב: /updateMyPassword.',
-        400
-      )
+      new AppError('הניתוב הזה לא מיועד לעדכון סיסמה! השתמש בניתוב: /updateMyPassword.', 400)
     );
   }
 
@@ -50,8 +47,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
 
   const oldPhoto = req.user.photo;
 
-  if (req.body.photo && oldPhoto !== req.body.photo)
-    removeImage(oldPhoto, 'users');
+  if (req.body.photo && oldPhoto !== req.body.photo) removeImage(oldPhoto, 'users');
 
   // 3) Update user document
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {

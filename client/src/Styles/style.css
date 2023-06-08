@@ -95,7 +95,7 @@ body {
 }
 
 #hero {
-  background-image: url('../../Assets/Images/hero4.png');
+  background-image: url('../Assets/Images/Backgrounds/hero4.png');
   height: 90vh;
   width: 100%;
   background-position: top 25% right 0;
@@ -116,7 +116,7 @@ body {
 }
 
 #hero button {
-  background-image: url('../../Assets/Images/button.png');
+  background-image: url('../Assets/Images/Backgrounds/button.png');
   background-color: transparent;
   color: #088178;
   border: 0;
@@ -128,27 +128,25 @@ body {
 }
 
 #hero button:hover {
-    background-image: url("../../Assets/Images/button.png");
-    background-color: transparent;
-    color: #088178;
-    border: 0;
-    padding: 14px /*top */ 80px/*bottom*/ 14px /*left */ 65px/*right */;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    font-weight: 700;
-    text-underline-offset: 2px;
-    font-size: 15px;
-    transition: all;
-    transition-delay: 2ms;
+  background-image: url('../Assets/Images/Backgrounds/button.png');
+  background-color: transparent;
+  color: #088178;
+  border: 0;
+  padding: 14px /*top */ 80px /*bottom*/ 14px /*left */ 65px /*right */;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 700;
+  text-underline-offset: 2px;
+  font-size: 15px;
+  transition: all;
+  transition-delay: 2ms;
 }
 
-#feature{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-   
-
+#feature {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 #feature .fe-box {
   width: 180px;
@@ -439,7 +437,7 @@ footer .copyright {
 /* shop page */
 
 #page-header {
-  background-image: url(../../Assets/Images/b1.jpg);
+  background-image: url(../Assets/Images/Backgrounds/b1.jpg);
   height: 300px;
   width: 100%;
   background-size: cover;
@@ -456,84 +454,79 @@ footer .copyright {
 }
 
 /* single product css */
-#prodetails .single-pro-image {
+#proDetails .single-pro-image {
   width: 40%;
   margin-right: 50px;
 }
 
-#prodetails .single-pro-details {
+#proDetails .single-pro-details {
   width: 50%;
   padding-top: 30px;
 }
 
-#prodetails .single-pro-details input{
-    width: 50px;
-    height: 47px;
-    padding-left: 10px;
-    font-size: 15px;
-    margin-right: 10px;
+#proDetails .single-pro-details input {
+  width: 50px;
+  height: 47px;
+  padding-left: 10px;
+  font-size: 15px;
+  margin-right: 10px;
 }
 
-#prodetails .single-pro-details input:focus{
-    outline: none;
+#proDetails .single-pro-details input:focus {
+  outline: none;
 }
 
-#prodetails .single-pro-details button{
-    background-color: #088178;
-    color: #fff;
-    height: 60px;
-
+#proDetails .single-pro-details button {
+  background-color: #088178;
+  color: #fff;
+  height: 60px;
 }
 
-
-#prodetails .single-pro-details button:hover{
-    background-color: #087199;
-    color: #fff;
-    height: 60px;
-    
+#proDetails .single-pro-details button:hover {
+  background-color: #087199;
+  color: #fff;
+  height: 60px;
 }
-#prodetails .single-pro-details span{
-
+#proDetails .single-pro-details span {
 }
 
-#prodetails{
-    display: flex;
-    margin-top: 20px;
+#proDetails {
+  display: flex;
+  margin-top: 20px;
 }
 
 .section-key-features {
-    margin-top: 20px;
-  }
-  
-  .key-features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  
-  .key-feature {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-  }
-  
-  .key-feature i {
-    font-size: 32px;
-    margin-bottom: 10px;
-  }
-  
-  .key-feature h5 {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .key-feature p {
-    font-size: 14px;
-    color: #777777;
-  }
-  
+  margin-top: 20px;
+}
+
+.key-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.key-feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.key-feature i {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.key-feature h5 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.key-feature p {
+  font-size: 14px;
+  color: #777777;
+}

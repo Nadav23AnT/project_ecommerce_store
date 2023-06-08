@@ -41,8 +41,7 @@ export const createOrder = catchAsync(async (req, res, next) => {
         select: 'price',
       });
 
-      if (!orderItem)
-        return next(new AppError(`הפריט ${orderItemId} לא נמצא`, 404));
+      if (!orderItem) return next(new AppError(`הפריט ${orderItemId} לא נמצא`, 404));
 
       if (!('price' in orderItem.product))
         return next(new AppError('אין מחיר למוצר שמקושר לפריט בהזמנה', 500));
@@ -53,10 +52,7 @@ export const createOrder = catchAsync(async (req, res, next) => {
     })
   );
 
-  const totalPrice = totalPrices.reduce(
-    (a, b) => Number(a) + Number(b),
-    0
-  ) as number;
+  const totalPrice = totalPrices.reduce((a, b) => Number(a) + Number(b), 0) as number;
 
   // 3) save order data in DB
   const order = await Order.create({
@@ -84,9 +80,7 @@ export const deleteOrder = catchAsync(async (req, res, next) => {
   if (order) {
     try {
       await Promise.all(
-        order.orderItems.map(async (orderItemId) =>
-          OrderItem.findByIdAndRemove(orderItemId)
-        )
+        order.orderItems.map(async (orderItemId) => OrderItem.findByIdAndRemove(orderItemId))
       );
     } catch (error) {
       return next(new AppError('בעיה במחיקת פריטים בהזמנה', 500));

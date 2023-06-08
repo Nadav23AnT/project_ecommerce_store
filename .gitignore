@@ -1,13 +1,12 @@
 # global ignores:
 .vs
 .cspellcache
+.vite
 
 # client ignores:
 client/node_modules
 client/build
 client/package-lock.json
-client/.cspellcache
-client/.vite
 
 # server ignores:
 server/node_modules

@@ -120,9 +120,7 @@ app.use('/api/orders', orderRouter);
 // app.use(`${api}/products`, productsRoutes);
 // app.use(`${api}/users`, usersRoutes);
 
-app.get('/api/', (req, res) =>
-  res.send(`Server is up and running v${version}`)
-);
+app.get('/api/', (req, res) => res.send(`Server is up and running v${version}`));
 
 app.all('*', (req, res, next) => {
   next(new AppError(`הכתובת ${req.originalUrl} לא קיימת בשרת!`, 404));
