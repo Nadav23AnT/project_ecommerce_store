@@ -27,23 +27,25 @@ function validateForm() {
   var password = document.forms['signupForm']['password'].value;
   var confirmPassword = document.forms['signupForm']['confirmPassword'].value;
 
-  if (name === '') {
-    alert('Please enter your name');
+  // Regular expressions
+  var nameRegex = /^[a-zA-Z\s]+$/;
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+
+  if (!nameRegex.test(name)) {
+    alert('Please enter a valid name');
     return false;
   }
 
-  if (email === '') {
-    alert('Please enter your email');
+  if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address');
     return false;
   }
 
-  if (password === '') {
-    alert('Please enter a password');
-    return false;
-  }
-
-  if (confirmPassword === '') {
-    alert('Please confirm your password');
+  if (!passwordRegex.test(password)) {
+    alert(
+      'Please enter a valid password. It must contain at least 8 characters, including at least one digit, one lowercase letter, one uppercase letter, and one special character (!@#$%^&*)'
+    );
     return false;
   }
 
