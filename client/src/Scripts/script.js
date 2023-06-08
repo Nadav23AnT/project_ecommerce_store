@@ -20,3 +20,38 @@ $(function () {
     }
   });
 });
+
+function validateForm() {
+  var name = document.forms['signupForm']['name'].value;
+  var email = document.forms['signupForm']['email'].value;
+  var password = document.forms['signupForm']['password'].value;
+  var confirmPassword = document.forms['signupForm']['confirmPassword'].value;
+
+  if (name === '') {
+    alert('Please enter your name');
+    return false;
+  }
+
+  if (email === '') {
+    alert('Please enter your email');
+    return false;
+  }
+
+  if (password === '') {
+    alert('Please enter a password');
+    return false;
+  }
+
+  if (confirmPassword === '') {
+    alert('Please confirm your password');
+    return false;
+  }
+
+  if (password !== confirmPassword) {
+    alert('Passwords do not match');
+    return false;
+  }
+
+  alert('Sign up successful!');
+  return true;
+}

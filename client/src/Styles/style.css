@@ -585,3 +585,11 @@ footer .copyright {
 .sign-up-container a {
   color: #4CAF50;
 }
+
+.error {
+  color: #f00;
+}
+
+.success {
+  color: #008000;
+}
