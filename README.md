@@ -1,7 +1,7 @@
-# Quantom Tech Store (project e-commerce store)
+# Quantom Tech Store (project - Full Stack App)
 ![](client/public/logo-addbg-preview.png)
 
-An application development project, we created a **full stack application**, while using the newest technologies
+An Full Stack app project, we created an Ecommerce store, while using the newest technologies
 
 # Software Development Team
 
