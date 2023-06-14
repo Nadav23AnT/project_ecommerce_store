@@ -1,13 +1,14 @@
 import data from '../Pages/data.js';
 
 const HomeScreen = {
-    render: () => {
-        const { products } = data;
-        return `
+  render: () => {
+    const { products } = data;
+    return `
         <ul class="products">
-        ${products.map(
-          (product) =>
-            `
+        ${products
+          .map(
+            (product) =>
+              `
             <li>
                 <div class="product">
                   <a href="../Pages/p1.html">
@@ -27,9 +28,9 @@ const HomeScreen = {
                   </div>
             </li>
             `
-        )}
+          )
+          .join('\n')}
         `;
-
-    }
-
-}
+  },
+};
+export default HomeScreen;
