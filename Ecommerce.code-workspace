@@ -10,11 +10,16 @@
         "splitTerminals": [
           {
             "name": "server",
-            "commands": ["cd server", "npm run dev"]
+            "commands": ["cd server", "npm install", "npm run dev"]
           },
           {
             "name": "client",
-            "commands": ["npm run huskyInit", "cd client", "npm run dev"]
+            "commands": [
+              "npm run huskyInit",
+              "cd client",
+              "npm install",
+              "npm run dev"
+            ]
           }
         ]
       },
