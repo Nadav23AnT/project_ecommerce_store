@@ -1,17 +1,17 @@
 // validation.js
 
-function validateForm() {
-  var name = document.forms['signupForm']['name'].value;
-  var email = document.forms['signupForm']['email'].value;
-  var password = document.forms['signupForm']['password'].value;
-  var confirmPassword = document.forms['signupForm']['confirmPassword'].value;
+export function validateForm() {
+  const name = document.forms.signupForm.name.value;
+  const email = document.forms.signupForm.email.value;
+  const password = document.forms.signupForm.password.value;
+  const confirmPassword = document.forms.signupForm.confirmPassword.value;
 
   // Regular expressions
-  var nameRegex = /^[a-zA-Z\s]+$/;
-  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  var passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
+  const nameRegex = /^[a-zA-Z\s]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
 
-  var isValid = true;
+  let isValid = true;
 
   if (!nameRegex.test(name)) {
     document.getElementById('nameError').textContent = 'Please enter a valid name';

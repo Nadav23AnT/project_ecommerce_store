@@ -10,11 +10,16 @@
         "splitTerminals": [
           {
             "name": "server",
-            "commands": ["cd server", "npm run dev"]
+            "commands": ["cd server", "npm install", "npm run dev"]
           },
           {
             "name": "client",
-            "commands": ["npm run huskyInit", "cd client", "npm run dev"]
+            "commands": [
+              "cd client",
+              "npm install",
+              "npm run huskyInit",
+              "npm run dev"
+            ]
           }
         ]
       },
@@ -31,7 +36,7 @@
         ]
       }
     ],
-    "typescript.tsdk": "Source/client/node_modules/typescript/lib",
+    "typescript.tsdk": "server/node_modules/typescript/lib",
     "eslint.workingDirectories": [
       {
         "mode": "auto"
