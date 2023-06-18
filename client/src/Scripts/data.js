@@ -11,7 +11,6 @@ export default {
       countInStock: 6,
       brand: 'Quantum Tech',
     },
-
     {
       id: '2',
       name: 'XI Series 15.6"',
@@ -23,7 +22,6 @@ export default {
       countInStock: 6,
       brand: 'Quantum Tech',
     },
-
     {
       id: '3',
       name: 'XX Series 14"',
@@ -35,7 +33,6 @@ export default {
       countInStock: 20,
       brand: 'Quantum Tech',
     },
-
     {
       id: '4',
       name: 'Logitech G502 Wired',
