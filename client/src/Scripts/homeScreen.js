@@ -3,6 +3,7 @@ import data from './data';
 const HomeScreen = {
   render: () => {
     const { products } = data;
+
     return `
         <ul class="products">
         ${products
