@@ -405,7 +405,6 @@ footer a {
   margin-bottom: 5px;
 }
 
-
 footer .follow {
   margin-top: 20px;
 }
@@ -427,7 +426,6 @@ footer .icon {
   display: flex;
   gap: 10px;
 }
-
 
 footer .install .row img {
   border: 1px solid #088177;
@@ -609,15 +607,15 @@ footer .copyright {
   font-weight: bold;
 }
 
-.form-group input[type="text"],
-.form-group input[type="password"] {
+.form-group input[type='text'],
+.form-group input[type='password'] {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-.form-group input[type="submit"] {
+.form-group input[type='submit'] {
   width: 100%;
   padding: 10px;
   background-color: #497aec;
@@ -637,7 +635,7 @@ footer .copyright {
 }
 
 .sign-up-container a {
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 .error {
