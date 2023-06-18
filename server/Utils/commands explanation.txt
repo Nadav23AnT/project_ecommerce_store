@@ -3,7 +3,7 @@
 env-cmd -f .env.dev:                   use the package "env-cmd" with the flag "-f" to load the environment file called: ".env.dev"
 ts-node-dev:                           run ts-node-dev package (to compile typescript to javascript and run server like nodemon)
 --watch .env.dev:                      watch for the changes file ".env.dev" - if so - restart the server
---require "tsconfig-paths/register":   require the packge tsconfig-paths (tsconfig-paths used for short imports like @Components/.....)
+--require "tsconfig-paths/register":   require the package tsconfig-paths (tsconfig-paths used for short imports like @Components/.....)
 --transpile-only:                      Especially for large code bases always consider running with --transpile-only flag which is normal for dev workflow and will speed up things greatly.
 --respawn:                             The --respawn flag is used to automatically restart a process that has crashed or exited.
 --inspect=4321:                        enable debugging. tell vscode to watch port 4321.

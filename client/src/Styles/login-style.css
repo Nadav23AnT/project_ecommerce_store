@@ -21,15 +21,15 @@
   font-weight: bold;
 }
 
-.form-group input[type="text"],
-.form-group input[type="password"] {
+.form-group input[type='text'],
+.form-group input[type='password'] {
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-.form-group input[type="submit"] {
+.form-group input[type='submit'] {
   width: 100%;
   padding: 10px;
   background-color: #497aec;
@@ -49,7 +49,7 @@
 }
 
 .sign-up-container a {
-  color: #4CAF50;
+  color: #4caf50;
 }
 
 .error {
