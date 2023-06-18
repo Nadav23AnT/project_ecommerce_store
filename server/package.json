@@ -11,7 +11,11 @@
     "build:dev": "tsc && rimraf build && ncc build server.ts -o build && xcopy .env.dev build && rimraf build/vendor && rimraf build/code-points.mem",
     "start": "cross-env NODE_ENV=production node build/server.js",
     "merge": "git pull origin main && git merge main",
+    "huskyInit": "cd.. && husky install server/.husky && cd server/.husky/_ && del /f .gitignore",
     "lint": "npx tsc && npx prettier --write --cache --loglevel silent . && npx cspell --cache --no-progress ./**/* && npx eslint --fix ."
+  },
+  "lint-staged": {
+    "../server/**/*": "npm run lint"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -73,6 +77,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.6",
