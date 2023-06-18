@@ -15,9 +15,9 @@
           {
             "name": "client",
             "commands": [
-              "npm run huskyInit",
               "cd client",
               "npm install",
+              "npm run huskyInit",
               "npm run dev"
             ]
           }
