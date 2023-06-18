@@ -119,7 +119,7 @@ app.use('/api/categories', categoryRouter);
 app.use('/api/orders', orderRouter);
 // app.use(`${api}/products`, productsRoutes);
 // app.use(`${api}/users`, usersRoutes);
-const d
+
 app.get('/api/', (req, res) => res.send(`Server is up and running v${version}`));
 
 app.all('*', (req, res, next) => {
