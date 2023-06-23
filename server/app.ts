@@ -16,6 +16,7 @@ import AppError from '@Utils/AppError';
 import userRouter from '@Routes/userRouter';
 import categoryRouter from '@Routes/categoryRouter';
 import orderRouter from '@Routes/orderRouter';
+import productRouter from '@Routes/productRouter';
 import { version } from './package.json';
 
 dotenv.config({ path: './.env.dev' });
@@ -117,8 +118,7 @@ app.use(compression());
 app.use('/api/users', userRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/orders', orderRouter);
-// app.use(`${api}/products`, productsRoutes);
-// app.use(`${api}/users`, usersRoutes);
+app.use('api/products', productRouter);
 
 app.get('/api/', (req, res) => res.send(`Server is up and running v${version}`));
 
